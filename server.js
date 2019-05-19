@@ -10,11 +10,12 @@ mongoose.connect('mongodb://login:login1234@ds117866.mlab.com:17866/login');
 
 const BuildRouter = require('./routes/BuildRouter');
 const LoginRouter = require('./routes/LoginRouter');
-const SubjectRouter = require('./routes/SubjectRouter')
+const SubjectRouter = require('./routes/SubjectRouter');
 const courseRouter = require('./routes/courseRouter');
-const TeacherRouter = require('./routes/TeacherRouter')
-const StudentRouter = require('./routes/StudentRouter')
-const OfficialRouter = require('./routes/OfficialRouter')
+const TeacherRouter = require('./routes/TeacherRouter');
+const StudentRouter = require('./routes/StudentRouter');
+const OfficialRouter = require('./routes/OfficialRouter');
+const RoomRouter = require('./routes/RoomRouter');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
@@ -28,6 +29,7 @@ app.use('/manageCourse', courseRouter);
 app.use('/manageTeacher',TeacherRouter);
 app.use('/manageStudent',StudentRouter);
 app.use('/manageOfficial',OfficialRouter);
+app.use('/manageRoom',RoomRouter);
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname,'public', 'index.html'));
 });

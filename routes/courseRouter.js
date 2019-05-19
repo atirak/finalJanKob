@@ -31,7 +31,7 @@ courseRouter.route('/create').get(function (req, res) {
     });
   });
  });
-//--------------------------------------------------------
+//--------------------------------------------------------------------------------------------
  courseRouter.route('/post').post(function (req, res) {
    const course = new Course(req.body);
    console.log(course);
@@ -58,7 +58,6 @@ courseRouter.route('/edit/:id').get(function (req, res) {
        return next(new Error('Could not load Document'));
      else {
        // do your updates here
-       
        course.codeSub = req.body.codeSub;
        course.nameSub = req.body.nameSub;
        course.nameTeach = req.body.nameTeach;
