@@ -8,25 +8,26 @@ const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://login:login1234@ds117866.mlab.com:17866/login');
 
-const CoinRouter = require('./routes/CoinRouter');
+const BuildRouter = require('./routes/BuildRouter');
 const LoginRouter = require('./routes/LoginRouter');
 const SubjectRouter = require('./routes/SubjectRouter')
-const PersonRouter = require('./routes/PersonRouter')
 const courseRouter = require('./routes/courseRouter');
 const TeacherRouter = require('./routes/TeacherRouter')
-
+const StudentRouter = require('./routes/StudentRouter')
+const OfficialRouter = require('./routes/OfficialRouter')
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/build', CoinRouter);
+app.use('/manageBuild', BuildRouter);
 app.use('/login', LoginRouter);
 app.use('/manageSubject',SubjectRouter)
-app.use('/managePerson',PersonRouter)
 app.use('/manageCourse', courseRouter);
-app.use('/manageTeacher',TeacherRouter)
+app.use('/manageTeacher',TeacherRouter);
+app.use('/manageStudent',StudentRouter);
+app.use('/manageOfficial',OfficialRouter);
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname,'public', 'index.html'));
 });
