@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Edit Course</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <h1>แก้ไขคอร์ส</h1>
+        <br>
+
+        <form method="post" action="/course/update/<%= course._id %>">
+            <div class="form-group">
+                <label for="item">รหัสวิชา</label>
+                <input type="text" class="form-control"  name="subjectID" value="<%= course.subjectID %>">
+            </div>
+            <div class="form-group">
+                <label for="item">ชื่อวิชา</label>
+                <input type="text" class="form-control"  name="subjectName" value="<%= course.subjectName %>">
+            </div>
+            <div class="form-group">
+                <label for="item">อาจารย์ผู้สอน</label>
+                <input type="text" class="form-control"  name="teacherName" value="<%= course.teacherName %>">
+            </div>
+            <div class="form-group">
+                <label for="item">กลุ่ม</label>
+                <input type="number" class="form-control"  name="group" value="<%= course.group %>">
+            </div>
+            <div class="form-group">
+                <label for="item">จำนวน</label>
+                <input type="number" class="form-control"  name="student" value="<%= course.student %>">
+            </div>
+
+            <div class="form-group">
+                    <select>
+                            <% for(var i=0; i < teacher.length; i++) { %>
+                        <option value="<%= teacher[i].firstname %>"> <%= teacher[i].firstname %>  <%= teacher[i].lastname %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="form-group">
+                        <select>
+                                <% for(var i=0; i < subject.length; i++) { %>
+                            <option value="<%= subject[i].namesubject %>"><%= subject[i].namesubject %></option>
+                            <% } %>
+                        </select>
+                </div>
+           
+            <button type="submit" class="btn btn-default">บันทึก</button>
+            </form>
+             <a href="/course"><button class="btn btn-default">ยกเลิก</button></a> 
+        
+    </div>
+
+</body>
+
+</html>

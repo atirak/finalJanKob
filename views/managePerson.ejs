@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Node js Express Tutorial</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit|Prompt">
+    <link rel="stylesheet" href="/css/css.css">
+    <title>จัดการบุคคลากร</title>
+    <script>
+        function show() {
+            var name = window.localStorage.getItem("storageName");
+            var type = window.localStorage.getItem("storageType");
+            document.getElementById("name").innerHTML = "ชื่อ-สกุล : " + name;
+            document.getElementById("type").innerHTML = "สถานะ : " + type;
+        }
+    </script>
+
+</head>
+
+<body onload="show()">
+
+
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column1 is-one-fifth" style="width: 100px;">
+                        <figure class="image is-64x64">
+                            <img src="../user.png" alt="ImageUser">
+                        </figure>
+                    </div>
+                    <div class="column2">
+
+                        <label id="type">สถานะ : </label> <br>
+                        <label id="name">ชื่อ-สกุล : </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="box" style="height: 600px;">
+            <div class="columns">
+                <div class="column1 is-one-fifth" style="width: 200px;">
+                    <aside>
+                        <p class="menu-label">
+                            <h2>เมนูหลัก</h2>
+                        </p>
+                        <ul class="menu-list">
+                            <li class="b"><a href="/build">จัดการตึก</a> </li>
+                            <li class="b"><a href="/managePerson">จัดการบุคคลากร</a> </li>
+                            <li class="b"><a href="">จัดการคอร์ส</a> </li>
+                            <li class="b"><a href="/manageSubject">จัดการรายวิชา</a> </li>
+                            <li class="b"><a href="/login">ออกจากระบบ</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="container">
+                    <br>
+                    <br>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="ค้นหาบุคคลากร" style="width: 350px;">
+
+                        <a class="btn btn-warning" > ค้นหา </a>
+                    </div>
+                    <br>
+                    <table class="table table-striped">
+                        <thead>
+                            <a href="/managePerson/create" class="btn btn-primary"><b>+เพิ่ม</b></a>
+                            <tr>
+                                <td><b>ลำดับ</b></td>
+                                <td><b>เลขประจำตัว</b></td>
+                                <td><b>ชื่อ</b></td>
+                                <td><b>นามสกุล</b></td>
+                                <td><b>สถานะ</b></td>
+                                <td><b>ชื่อผู้ใช้</b></td>
+                                <td><b>รหัสผ่าน</b></td>
+                                <td colspan="3"><b>Action</b></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i < person.length; i++) { %>
+
+                            <tr>
+                                <td>
+                                    <%= i+1 %>
+                                </td>
+                                <td>
+                                    <%= person[i].id %>
+                                </td>
+                                <td>
+                                    <%= person[i].name %>
+                                </td>
+                                <td>
+                                    <%= person[i].lastname %>
+                                </td>
+                                <td>
+                                    <%= person[i].type %>
+                                </td>
+                                <td>
+                                    <%= person[i].user %>
+                                </td>
+                                <td>
+                                    <%= person[i].password%>
+                                </td>
+
+                                <td><a href="/managePerson/edit/<%= person[i]._id %>" class="btn btn-info">แก้ไข</a>
+                                    <a href="/managePerson/delete/<%= person[i]._id %>" class="btn btn-danger">ลบ</a>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+
+</html>

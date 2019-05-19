@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EJS Engine</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+
+        <h1>Add</h1>
+
+        <form method="post" action="/managePerson/post/">
+          <div class="form-group">
+            <label for="item">เลขประจำตัว</label>
+            <input type="text" class="form-control" id="id" name="id">
+          </div>
+          <div class="form-group">
+            <label for="item">ชื่อ</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="form-group">
+            <label for="item">นามสกุล</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" >
+          </div>
+          <div class="form-group">
+            <label for="item">สถานะ</label>
+            <input type="text" class="form-control" id="type" name="type" >
+          </div>
+          <div class="form-group">
+            <label for="item">ชื่อผู้ใช้</label>
+            <input type="text" class="form-control" id="user" name="user" >
+          </div>
+          <div class="form-group">
+            <label for="item">รหัสผ่าน</label>
+            <input type="text" class="form-control" id="password" name="password" >
+          </div>
+          <button type="submit" class="btn btn-default">บันทึก</button>
+        </form>
+          <a href="/managePerson"><button class="btn btn-default">ยกเลิก</button></a> 
+        
+    </div>
+
+  </body>
+</html>
