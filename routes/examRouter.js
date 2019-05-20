@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const courseRouter = express.Router();
+const examRouter = express.Router();
 const Course = require('../models/Course.model');
 const Teacher = require('../models/Teacher.model');
 const Subject = require('../models/Subject.model');
@@ -10,19 +10,19 @@ const User = require('../models/User.model');
 const Exam = require('../models/Exam.model');
 
 
-courseRouter.route('/').get(function (req, res) {
-   Course.find(function (err, course){
+examRouter.route('/').get(function (req, res) {
+  Exam.find(function (err, Exam){
       if(err){
         console.log(err);
       }
       else {
-        res.render('manageCourse', {course: course});
+        res.render('manageExam', {exam: Exam});
       }
     });
 });
 
 //---------------- create -------------
-courseRouter.route('/create').get(function (req, res) {
+examRouter.route('/create').get(function (req, res) {
   Teacher.find().then(teacher =>{
     console.log(teacher)
     Subject.find(function(err,subject){
@@ -35,7 +35,7 @@ courseRouter.route('/create').get(function (req, res) {
   });
  });
 //--------------------------------------------------------------------------------------------
- courseRouter.route('/post').post(function (req, res) {
+examRouter.route('/post').post(function (req, res) {
    const course = new Course(req.body);
    console.log(course);
    var str = req.body.teacherName;
@@ -50,7 +50,7 @@ courseRouter.route('/create').get(function (req, res) {
      });
  });
 // -------------------------------------Edit--------------------------------------------------
-courseRouter.route('/edit/:id').get(function (req, res) {
+examRouter.route('/edit/:id').get(function (req, res) {
    const id = req.params.id;
    Course.findById(id, function (err, course){
        res.render('editCourse', {course: course});
@@ -58,7 +58,7 @@ courseRouter.route('/edit/:id').get(function (req, res) {
  });
 
  //---------------------------------------Update-----------------------------------------------
- courseRouter.route('/update/:id').post(function (req, res) {
+ examRouter.route('/update/:id').post(function (req, res) {
    Course.findById(req.params.id, function(err, course) {
      if (!course)
        return next(new Error('Could not load Document'));
@@ -80,49 +80,13 @@ courseRouter.route('/edit/:id').get(function (req, res) {
    });
  });
 // ---------------------------------------------delete------------------------------------------
-courseRouter.route('/delete/:id').get(function (req, res) {
-   Course.findByIdAndRemove({_id: req.params.id},
-        function(err, course){
+examRouter.route('/delete/:id').get(function (req, res) {
+  Exam.findByIdAndRemove({_id: req.params.id},
+        function(err, exam){
          if(err) res.json(err);
-         else res.redirect('/manageCourse');
+         else res.redirect('/manageExam');
      });
  });
-courseId=""
-courseName=""
- courseRouter.route('/addExam/:id').get(function (req, res) {
-  const id = req.params.id;
-  courseId=id
-  Course.findById(id, function (err, course){
-    Room.find(function(err,room){
-      User.find(function(err,user){
-        courseName=course.subjectName
-      res.render('createExam', {course: course,room: room,user: user,});
-  });
-});
-});
-});
 
-courseRouter.route('/saveExam').post(function (req, res) {
-  const exam = new Exam(req.body);
-  exam.courseID = courseId;
-  exam.subjectName = courseName;
-  var time = req.body.datetime;
-  var tarray = time.split("T");
-  exam.date = tarray[0];
-  exam.timeStart = tarray[1];
-  var tarray2 = tarray[1].split(":");
-  exam.timeStop = (Number(tarray2[0])+Number(req.body.lengthTime))+":"+tarray2[1];
-  exam.room = req.body.room;
-  var str = req.body.examiner;
-  var array = str.split(",");
-  exam.examiner = array;
-  exam.save()
-    .then(course => {
-    res.redirect('/manageExam'); 
-    })
-    .catch(err => {
-    res.status(400).send("unable to save to database");
-    });
-});
 
-module.exports = courseRouter;
+module.exports = examRouter;

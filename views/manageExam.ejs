@@ -165,7 +165,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">คอส</h1>
+              <h1 class="h3 mb-0 text-gray-800">การสอบ</h1>
               <a href="/manageCourse/create" class="d-none d-sm-inline-block btn btn-lg btn-primary shadow-sm"><i
                   class="fas fa-plus fa-sm text-white-50"></i> เพิ่ม</a>
             </div>
@@ -174,29 +174,33 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>ลำดับ</th>
-                      <th>รหัสวิชา</th>
-                      <th>อาจารย์</th>
+                      
+                      <th>วิชา</th>
+                      <th>เวลา</th>
+                      <th>วันที่</th>
+                      <th>ห้อง</th>
                       <th>จัดการ</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <% for(var i=0; i < course.length; i++) { %>
+                    <% for(var i=0; i < exam.length; i++) { %>
                     <tr>
                       <td>
-                        <%= i+1 %>
+                        <%= exam[i].subjectName%>
                       </td>
                       
                       <td>
-                        <%= course[i].subjectName %>
+                        <%= exam[i].timeStart %>-<%= exam[i].timeStop %>
                       </td>
                       <td>
-                          <%= course[i].teacherName %>
+                          <%= exam[i].date %>
+                        </td>
+                        <td>
+                          <%= exam[i].room %>
                         </td>
 
-                      <td><a href="/manageCourse/edit/<%= course[i]._id %>" class="btn btn-info">แก้ไข</a>
-                        <a href="/manageCourse/delete/<%= course[i]._id %>" class="btn btn-danger">ลบ</a>
-                        <a href="/manageCourse/addExam/<%= course[i]._id %>" class="btn btn-primary">เพิ่มการสอบ</a>
+                      <td><a href="/manageExam/edit/<%= exam[i]._id %>" class="btn btn-info">แก้ไข</a>
+                        <a href="/manageExam/delete/<%= exam[i]._id %>" class="btn btn-danger">ลบ</a>
                       </td>
                     </tr>
                     <% } %>
