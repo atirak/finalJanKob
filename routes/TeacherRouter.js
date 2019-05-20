@@ -64,8 +64,6 @@ TeacherRouter.route('/update/:id').post(function (req, res) {
       else {
           // do your updates here
           teacher.id = req.body.user;
-          teacher.user = req.body.user,
-          teacher.password = req.body.password,
           teacher.firstname = req.body.firstname,
           teacher.lastname = req.body.lastname,
           teacher.faculty = req.body.faculty,
