@@ -16,7 +16,11 @@ const TeacherRouter = require('./routes/TeacherRouter');
 const StudentRouter = require('./routes/StudentRouter');
 const OfficialRouter = require('./routes/OfficialRouter');
 const RoomRouter = require('./routes/RoomRouter');
+<<<<<<< HEAD
 const examRouter = require('./routes/examRouter');
+=======
+const TermRouter = require('./routes/TermRouter');
+>>>>>>> b4c944c690d3eb495a9c5e13956295bcd6b892a1
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
@@ -31,7 +35,11 @@ app.use('/manageTeacher',TeacherRouter);
 app.use('/manageStudent',StudentRouter);
 app.use('/manageOfficial',OfficialRouter);
 app.use('/manageRoom',RoomRouter);
+<<<<<<< HEAD
 app.use('/manageExam',examRouter);
+=======
+app.use('/Term',TermRouter);
+>>>>>>> b4c944c690d3eb495a9c5e13956295bcd6b892a1
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname,'public', 'index.html'));
 });
@@ -55,8 +63,13 @@ app.get('/login', (req, res) => {
  app.get('/manageCourse', (req, res) => {
   res.render('manageCourse');
  });
+<<<<<<< HEAD
  app.get('/manageExam', (req, res) => {
   res.render('manageExam');
+=======
+ app.get('/Term', (req, res) => {
+  res.render('Term');
+>>>>>>> b4c944c690d3eb495a9c5e13956295bcd6b892a1
  });
  app.listen(port, function(){
   console.log('Node js Express js Tutorial at port', port);

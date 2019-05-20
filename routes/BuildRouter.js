@@ -9,7 +9,7 @@ BuildRouter.route('/').get(function (req, res) {
       console.log(err);
     }
     else {
-      res.render('manageBuild', { build: build });
+      res.render('manageBuild', { build: build ,'builds': JSON.stringify(build)});
     }
   });
 });

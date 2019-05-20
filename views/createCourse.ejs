@@ -223,7 +223,13 @@
                                     <div class="form-group">
                                         <label for="item">จำนวนคน</label>
                                         <input type="text" class="form-control" id="student" name="student" readonly>
-                                    </div><button type="submit" class="btn btn-success">บันทึก</button>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="item">รายชื่อนิสิต</label>
+                                            <br>
+                                            <input type="file" id="student" name="student" >
+                                        </div>
+                                    <button type="submit" class="btn btn-success">บันทึก</button>
                                     <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
                             </div>
 
@@ -294,7 +300,7 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
-
+    <script src="xlsx.full.min.js"></script>
     <script>
         var boolean = true
         function Name(n1, n2, n3) {
