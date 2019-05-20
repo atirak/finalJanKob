@@ -204,7 +204,19 @@
                                             <input type="text" class="form-control" id="userName" name="examiner"
                                                 readonly>
                                         </div>
+                                        <label for="item">เลือกกลุ่ม</label>
+                                        <div class="form-group">
+                                            <select class="form-control" id="roomID" style="width:auto;" name="group">
+                                                <option hidden>เลือก</option>
+                                                <% for(var i=0; i < group.length; i++) { %>
+                                                <option value="<%= group[i].groupID %>">
+                                                    <%= group[i].groupID%>
+                                                </option>
+                                                
+                                                <% } %>
+                                            </select>
 
+                                        </div>
 
                                         <label for="item">เลือกห้อง</label>
                                         <div class="form-group">
@@ -212,7 +224,7 @@
                                                 <option hidden>เลือก</option>
                                                 <% for(var i=0; i < room.length; i++) { %>
                                                    
-                                                <%if ((room[i].row*room[i].column) >= Number(course.student)) { %>
+                                                <%if ((room[i].row*room[i].column) >= Number(group[0].student.length)) { %>
                                                 <option value="<%= room[i].name %>">
                                                     <%= room[i].name%>      ประเภท <%=room[i].typeroom%>
                                                 </option>

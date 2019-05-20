@@ -9,7 +9,8 @@ const Exam= new Schema({
     date: { type: String},
     timeStart: { type: String},
     timeStop: { type: String},
-    room: { type: String}
+    room: { type: String},
+    group: { type: String}
 },{
     collection: 'exam'
 });

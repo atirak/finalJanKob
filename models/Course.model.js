@@ -5,9 +5,7 @@ const Course= new Schema({
 
     subjectID: { type: String },
     subjectName: { type: String },
-    teacherName: { type: [String] },
-    group: { type: String},
-    student: { type: String}
+    teacherName: { type: [String] }
 },{
     collection: 'course'
 });

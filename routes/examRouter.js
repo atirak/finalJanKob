@@ -55,12 +55,11 @@ examRouter.route('/edit/:id').get(function (req, res) {
    const id = req.params.id;
    
    Exam.findById(id, function (err, Exam){
-     Course.findById(Exam.courseID, function (err, course){
     User.find(function (err, user){
       Room.find(function(err,room){
-       res.render('editExam', {exam: Exam,user: user,room: room,course: course});
+       res.render('editExam', {exam: Exam,user: user,room: room});
       }); 
-    });
+    
    });
   });
  });
@@ -74,15 +73,16 @@ examRouter.route('/edit/:id').get(function (req, res) {
        // do your updates here
        var time = req.body.datetime;
        var tarray = time.split("T");
-       exam.date = tarray[0];
-       exam.timeStart = tarray[1];
+       Exam.date = tarray[0];
+       Exam.timeStart = tarray[1];
        var tarray2 = tarray[1].split(":");
-       exam.timeStop = (Number(tarray2[0])+Number(req.body.lengthTime))+":"+tarray2[1];
-       exam.room = req.body.room;
+       Exam.timeStop = (Number(tarray2[0])+Number(req.body.lengthTime))+":"+tarray2[1];
+       Exam.room = req.body.room;
        var str = req.body.examiner;
        var array = str.split(",");
-       exam.examiner = array;
-       exam.save().then(course => {
+       Exam.examiner = [];
+       Exam.examiner = array;
+       Exam.save().then(course => {
            res.redirect('/manageExam');
        })
        .catch(err => {

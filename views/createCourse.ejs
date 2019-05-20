@@ -212,27 +212,18 @@
                                             readonly>
                                     </div>
 
-                                    <label for="item">กลุ่ม</label>
+                                    <label for="item">จำนวนกลุ่ม</label>
                                     <div class="form-group">
-                                        <select class="form-control" id="group" onchange="Name('group','student','1')"
-                                            style="width:auto;">
-                                            <option hidden>เลือก</option>
-                                            <% for(var i=0; i < group.length; i++) { %>
-                                            <option value="<%= group[i].amount %>"><%= group[i].groupID %>
-                                            </option>
-                                            <% } %>
-                                        </select>
+                                        
+                                            <input type="number" class="form-control" id="group" name="group" >
+                                        
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="item">จำนวนคน</label>
-                                        <input type="text" class="form-control" id="student" name="student" readonly>
+                                        <label for="item">จำนวนคนแต่ละกลุ่ม</label>
+                                        <input type="number" class="form-control" id="student" name="student" >
                                     </div>
-                                    <div class="form-group">
-                                            <label for="item">รายชื่อนิสิต</label>
-                                            <br>
-                                            <input type="file" id="student" name="student" >
-                                        </div>
+                                   
                                     <button type="submit" class="btn btn-success">บันทึก</button>
                                     <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
                             </div>
