@@ -76,16 +76,7 @@ TeacherRouter.route('/update/:id').post(function (req, res) {
          
           teacher.save().then(Teacher => {
             
-            var user = new User();
-            user.user =  teacher.user
-            user.pass = teacher.password
-            user.firstname = teacher.firstname
-            user.lastname = teacher.lastname
-            user.type = "teacher"
-            user.pass = teacher.password
-            console.log(user)
             
-            user.save()
             res.redirect('/manageTeacher');
           }).catch(err => {
             res.status(400).send("unable to save to database");
