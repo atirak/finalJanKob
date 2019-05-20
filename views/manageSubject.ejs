@@ -25,7 +25,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="showUser()">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -92,7 +92,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/Term">
           <i class="fas fa-fw fa-table"></i>
           <span>ปีการศึกษา</span></a>
       </li>
@@ -143,7 +143,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span id="showUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
                 <i class="fas fa-user fa-sm fa-fw"></i>
               </a>
               <!-- Dropdown - User Information -->
@@ -267,6 +267,12 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+
+  <!--ajax scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- main scripts -->
+ <script src="main.js"></script>
 
 </body>
 
