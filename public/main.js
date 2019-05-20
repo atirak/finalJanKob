@@ -1,5 +1,6 @@
-var list = '<%-JSON.stringify(data)%>';
+var list = <%-JSON.stringify(data)%>;
 var build = JSON.parse(list);
+console.log(list);
 console.log(build[0].name +" "+build[0].lastname);
 sessionStorage.setItem("name",build[0].name +" "+build[0].lastname)
 
