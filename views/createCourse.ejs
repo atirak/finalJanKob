@@ -195,8 +195,8 @@
                                             onchange="Name('teachID','teacherName','0')" style="width:auto;">
                                             <option hidden>เลือก</option>
                                             <% for(var i=0; i < teacher.length; i++) { %>
-                                            <option value="<%= teacher[i].firstname %> <%= teacher[i].lastname %> ">
-                                                <%= teacher[i].firstname %> <%= teacher[i].lastname %>
+                                            <option value="<%= teacher[i].firstname %> <%= teacher[i].lastname%>">
+                                                <%= teacher[i].firstname %> <%= teacher[i].lastname%>
                                             </option>
                                             <% } %>
                                         </select>
@@ -301,35 +301,8 @@
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
     <script src="xlsx.full.min.js"></script>
-
     <script>
-        /* set up XMLHttpRequest */
-// var url = "test.xlsx";
-// var oReq = new XMLHttpRequest();
-// oReq.open("GET", url, true);
-// oReq.responseType = "arraybuffer";
-
-// oReq.onload = function(e) {
-//   var arraybuffer = oReq.response;
-
-//   /* convert data to binary string */
-//   var data = new Uint8Array(arraybuffer);
-//   var arr = new Array();
-//   for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-//   var bstr = arr.join("");
-
-//   /* Call XLSX */
-//   var workbook = XLSX.read(bstr, {type:"binary"});
-
-//   /* DO SOMETHING WITH workbook HERE */
-//   var first_sheet_name = workbook.SheetNames[0];
-//   /* Get worksheet */
-//   var worksheet = workbook.Sheets[first_sheet_name];
-//   console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
-// }
-
-// oReq.send();
-
+        var boolean = true
         function Name(n1, n2, n3) {
             if (n3 === '1') {
                 var e = document.getElementById(n1);
@@ -338,7 +311,13 @@
             } else {
                 var e = document.getElementById(n1);
                 var name = e.options[e.selectedIndex].value;
-                document.getElementById(n2).value += name + ". ";
+                if(boolean){
+                    boolean=false;
+                    document.getElementById(n2).value += name;
+                }else{
+                    document.getElementById(n2).value += ","+name;
+                }
+                
             }
 
         }
