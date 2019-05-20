@@ -38,16 +38,18 @@
         <div class="sidebar-brand-icon">
           <i class="fas fa-users-cog"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">student</div>
+        <div class="sidebar-brand-text mx-3">official</div>
       </a>
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Pages จัดการบุคคลากร Menu -->
+      
+
       <li class="nav-item">
-        <a class="nav-link" href="/manageExam/nisit">
+        <a class="nav-link" href="/manageExam/ajanExam">
             <i class="fas fa-fw fa-table"></i>
-            <span>ดูตารางสอบ</span></a>
+            <span>ดูตางรางคุมสอบ</span></a>
     </li>
   
 
@@ -137,27 +139,27 @@
                   </thead>
                   <tbody>
                     <% for(var i=0; i < exam.length; i++) { %>
-                      <tr>
-                        <td>
-                          <%= exam[i].subjectName%>
+                    <tr>
+                      <td>
+                        <%= exam[i].subjectName%>
+                      </td>
+                      <td>
+                        <%= exam[i].group%>
+                      </td>
+                      
+                      <td>
+                        <%= exam[i].timeStart %>-<%= exam[i].timeStop %>
+                      </td>
+                      <td>
+                          <%= exam[i].date %>
                         </td>
                         <td>
-                          <%= exam[i].group%>
+                          <%= exam[i].room %>
                         </td>
-                        
-                        <td>
-                          <%= exam[i].timeStart %>-<%= exam[i].timeStop %>
-                        </td>
-                        <td>
-                            <%= exam[i].date %>
-                          </td>
-                          <td>
-                            <%= exam[i].room %>
-                          </td>
-  
-                        
-                      </tr>
-                      <% } %>
+
+                      
+                    </tr>
+                    <% } %>
                   </tbody>
                 </table>
               </div>

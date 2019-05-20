@@ -34,6 +34,9 @@ app.use('/manageOfficial',OfficialRouter);
 app.use('/manageRoom',RoomRouter);
 app.use('/manageExam',examRouter);
 app.use('/Term',TermRouter);
+
+app.use('/ajanExam',examRouter);
+app.use('/nisitExam',examRouter);
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname,'public', 'index.html'));
 });
