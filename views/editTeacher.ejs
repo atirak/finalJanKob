@@ -141,24 +141,10 @@
           </form> -->
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto"> 
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span id="showUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                                <i class="fas fa-user fa-sm fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+                        <!-- Nav Item - User Information  -->
+                        
 
                     </ul>
 
@@ -176,14 +162,6 @@
                                     <h1 class="h4 text-gray-900 mb-4">แก้ไขข้อมูลอาจารย์</h1>
                                 </div>
                                 <form method="post" action="/manageTeacher/update/<%= teacher._id%>">
-                                    <div class="form-group">
-                                        <label for="item">Username</label>
-                                        <input type="text" class="form-control" id="user" name="user" value="<%= teacher.user%>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="item">Password</label>
-                                        <input type="text" class="form-control" id="password" name="password" value="<%= teacher.password%>">
-                                    </div>
                                     <div class="form-group">
                                         <label for="item">ชื่อ</label>
                                         <input type="text" class="form-control" id="firstname" name="firstname" value="<%= teacher.firstname%>">
@@ -273,7 +251,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <!-- main scripts -->
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 
