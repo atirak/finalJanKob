@@ -23,7 +23,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="showUser()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -47,11 +47,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>จัดการบุคลากร</span>
+                    <span>จัดการบุคคลากร</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">จัดการอาจารย์</a>
+                        <a class="collapse-item" href="/manageTeacher">จัดการอาจารย์</a>
                         <a class="collapse-item" href="">จัดการนิสิต</a>
                         <a class="collapse-item" href="">จัดการเจ้าหน้าที่ทั่วไป</a>
                     </div>
@@ -97,11 +97,12 @@
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/Term">
+                <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>ปีการศึกษา</span></a>
             </li>
-            
+
+          
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -146,7 +147,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                <span id="showUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
                                 <i class="fas fa-user fa-sm fa-fw"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -172,60 +173,45 @@
                         <div class="card-body p-0">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">แก้ไขคอส</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">เพิ่มรายวิชา</h1>
                                 </div>
-                                <form method="post" action="/manageCourse/update/<%= course._id%>">
+                                <form method="post" action="/manageTeacher/update/<%= teacher._id%>">
                                     <div class="form-group">
-                                        <label for="item">รหัสวิชา <%= course.subjectName %></label>
-                                       
-                                    </div>
-                                    
-                                    <label for="item">เลือกอาจารย์</label>
-                                    <div class="form-group">
-                                        <select class="form-control" id="teachID"
-                                            onchange="Name('teachID','teacherName','0')" style="width:auto;">
-                                            <option hidden>เลือก</option>
-                                            <% for(var i=0; i < teacher.length; i++) { %>
-                                            <option value="<%= teacher[i].firstname %> <%= teacher[i].lastname%>">
-                                                <%= teacher[i].firstname %> <%= teacher[i].lastname%>
-                                            </option>
-                                            <% } %>
-                                        </select>
-
+                                        <label for="item">Username</label>
+                                        <input type="text" class="form-control" id="user" name="user" value="<%= teacher.user%>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="item">อาจารย์</label>
-                                        <input type="text" class="form-control" id="teacherName" name="teacherName"
-                                            readonly>
-                                    </div>
-
-                                    <label for="item">จำนวนกลุ่ม</label>
-                                    <div class="form-group">
-                                        
-                                            <input type="number" class="form-control" id="group" name="group" >
-                                        
-
+                                        <label for="item">Passworld</label>
+                                        <input type="text" class="form-control" id="password" name="password" value="<%= teacher.password%>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="item">จำนวนคนแต่ละกลุ่ม</label>
-                                        <input type="number" class="form-control" id="student" name="student" >
+                                        <label for="item">ชื่อ</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" value="<%= teacher.firstname%>">
                                     </div>
-                                   
+                                    <div class="form-group">
+                                        <label for="item">นามสกุล</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" value="<%= teacher.lastname%>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item">คณะ</label>
+                                        <input type="text" class="form-control" id="faculty" name="faculty" value="<%= teacher.faculty%>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item">สาขา</label>
+                                        <input type="text" class="form-control" id="major" name="major" value="<%= teacher.major%>">
+                                    </div>
                                     <button type="submit" class="btn btn-success">บันทึก</button>
-                                    <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
+                                    <a href="/manageTeacher" class="btn btn-danger">ยกเลิก</a>
+                                    <hr>
+                                </form>
                             </div>
-
-
-                            <hr>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
-
-
-    </div>
     </div>
 
     </div>
@@ -282,28 +268,13 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
-    <script src="xlsx.full.min.js"></script>
-    <script>
-        var boolean = true
-        function Name(n1, n2, n3) {
-            if (n3 === '1') {
-                var e = document.getElementById(n1);
-                var name = e.options[e.selectedIndex].value;
-                document.getElementById(n2).value = name;
-            } else {
-                var e = document.getElementById(n1);
-                var name = e.options[e.selectedIndex].value;
-                if(boolean){
-                    boolean=false;
-                    document.getElementById(n2).value += name;
-                }else{
-                    document.getElementById(n2).value += ","+name;
-                }
-                
-            }
 
-        }
-    </script>
+    <!--ajax scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+     <!-- main scripts -->
+    <script src="main.js"></script>
+
 </body>
 
 </html>

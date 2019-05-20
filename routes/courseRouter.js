@@ -70,6 +70,7 @@ courseRouter.route('/edit/:id').get(function (req, res) {
   const id = req.params.id;
   Course.findById(id, function (err, course) {
     Teacher.find().then(teacher => {
+      console.log(course)
       res.render('editCourse', { course: course, teacher: teacher });
     });
   });
@@ -133,8 +134,12 @@ courseRouter.route('/update/:id').post(function (req, res) {
 courseRouter.route('/delete/:id').get(function (req, res) {
   Course.findByIdAndRemove({ _id: req.params.id },
     function (err, course) {
-      if (err) res.json(err);
-      else res.redirect('/manageCourse');
+      if (err) res.json(err);      
+      else{
+      Group.deleteMany({ courseID: req.params.id }, function (err, group) {         
+      }); 
+      res.redirect('/manageCourse');
+    }
     });
 });
 
