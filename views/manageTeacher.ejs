@@ -48,7 +48,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>จัดการบุคคลากร</span>
+                    <span>จัดการบุคลากร</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -69,7 +69,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="/manageRoom">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการห้องสอบ</span>
                 </a>
@@ -206,9 +206,9 @@
                                             <td>
                                                 <%= teacher[i].major %>
                                             </td>
-                                            <td><a href="/manageSubject/edit/<%= teacher[i]._id %>"
+                                            <td><a href="/manageTeacher/edit/<%= teacher[i]._id %>"
                                                     class="btn btn-info">แก้ไข</a>
-                                                <a href="/manageSubject/delete/<%= teacher[i]._id %>"
+                                                <a href="/manageTeacher/delete/<%= teacher[i]._id %>"
                                                     class="btn btn-danger">ลบ</a>
                                             </td>
                                         </tr>
