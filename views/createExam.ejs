@@ -13,11 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
+    <link <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
 
@@ -168,76 +164,93 @@
                         <div class="card-body p-0">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">เพิ่มคอส</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">จัดสอบ</h1>
                                 </div>
                                 <form method="post" action="/manageCourse/post/">
                                     <div class="form-group">
-                                        <label for="item">รหัสวิชา</label>
+                                        <label for="item">เวลา</label>
                                         <div class="form-group">
-                                            <select class="form-control" id="subjectID"
-                                                onchange="Name('subjectID','subjectName','1')" style="width:auto;">
+                                            <input type="datetime-local" id="meeting-time" name="meeting-time"
+                                                >
+                                        </div>
+
+                                        <label for="item">จำนวนชั่วโมงการสอบ</label>
+                                        <div class="form-group">
+                                            <input type="number" min="1">
+                                        </div>
+
+                                        <label for="item">เลือกผู้คุมสอบ</label>
+                                        <div class="form-group">
+                                            <select class="form-control" id="userID"
+                                                onchange="Name('userID','userName','0')" style="width:auto;">
                                                 <option hidden>เลือก</option>
-                                                <% for(var i=0; i < subject.length; i++) { %>
-                                                <option value="<%= subject[i].namesubject %>"><%= subject[i].id %>
+                                                <% for(var i=0; i < user.length; i++) { %>
+                                                <%if (user[i].type != "student") { %>
+                                                <option value="<%= user[i].name %> <%= user[i].lastname %> ">
+                                                    <%= user[i].name %> <%= user[i].lastname %>
                                                 </option>
                                                 <% } %>
+                                                <% } %>
                                             </select>
+
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="item">รายวิชา</label>
-                                        <input type="text" class="form-control" id="subjectName" name="subjectName"
-                                            readonly>
-                                    </div>
-                                    <label for="item">เลือกอาจารย์</label>
-                                    <div class="form-group">
-                                        <select class="form-control" id="teachID"
-                                            onchange="Name('teachID','teacherName','0')" style="width:auto;">
+                                        <div class="form-group">
+                                            <label for="item">ผู้คุมสอบ</label>
+                                            <input type="text" class="form-control" id="userName" name="examiner"
+                                                readonly>
+                                        </div>
+
+                                        <label for="item">เลือกประเภทห้อง</label>
+                                        <div class="form-group">
+                                            <select class="form-control" id="roomType" style="width:auto;">
                                             <option hidden>เลือก</option>
-                                            <% for(var i=0; i < teacher.length; i++) { %>
-                                            <option value="<%= teacher[i].firstname %> <%= teacher[i].lastname %> ">
-                                                <%= teacher[i].firstname %> <%= teacher[i].lastname %>
+
+                                            <option value="Lab">
+                                                Lab
                                             </option>
-                                            <% } %>
-                                        </select>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="item">อาจารย์</label>
-                                        <input type="text" class="form-control" id="teacherName" name="teacherName"
-                                            readonly>
-                                    </div>
-
-                                    <label for="item">กลุ่ม</label>
-                                    <div class="form-group">
-                                        <select class="form-control" id="group" onchange="Name('group','student','1')"
-                                            style="width:auto;">
-                                            <option hidden>เลือก</option>
-                                            <% for(var i=0; i < group.length; i++) { %>
-                                            <option value="<%= group[i].amount %>"><%= group[i].groupID %>
+                                            <option value="Lecture">
+                                                Lecture
                                             </option>
-                                            <% } %>
-                                        </select>
+                                            </select>
 
+
+                                        </div>
+
+                                        <label for="item">เลือกห้อง</label>
+                                        <div class="form-group">
+                                            <select class="form-control" id="roomID" style="width:auto;">
+                                                <option hidden>เลือก</option>
+                                                <% for(var i=0; i < room.length; i++) { %>
+                                                   
+                                                <%if ((room[i].row*room[i].column) == Number(course.student)) { %>
+                                                <option value="<%= room[i].name %> ">
+                                                    <%= room[i].name %>
+                                                </option>
+                                                
+                                                <% } %>
+                                                <% } %>
+                                            </select>
+
+                                        </div>
+
+
+
+
+                                        <button type="submit" class="btn btn-success">บันทึก</button>
+                                        <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="item">จำนวนคน</label>
-                                        <input type="text" class="form-control" id="student" name="student" readonly>
-                                    </div><button type="submit" class="btn btn-success">บันทึก</button>
-                                    <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
+
+
+                                    <hr>
+                                </form>
                             </div>
-
-
-                            <hr>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
-
-
-    </div>
     </div>
 
     </div>
@@ -296,6 +309,14 @@
     <script src="/js/demo/chart-pie-demo.js"></script>
 
     <script>
+        $(document).ready(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+        type = ""
+        function set(type) {
+            type = document.getElementById(type).value
+        }
+
         function Name(n1, n2, n3) {
             if (n3 === '1') {
                 var e = document.getElementById(n1);
@@ -308,6 +329,7 @@
             }
 
         }
+
     </script>
 </body>
 

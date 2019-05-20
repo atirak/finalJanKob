@@ -5,6 +5,8 @@ const Course = require('../models/Course.model');
 const Teacher = require('../models/Teacher.model');
 const Subject = require('../models/Subject.model');
 const Group = require('../models/Group.model');
+const Room = require('../models/Room.model');
+const User = require('../models/User.model');
 
 
 courseRouter.route('/').get(function (req, res) {
@@ -85,8 +87,12 @@ courseRouter.route('/delete/:id').get(function (req, res) {
  courseRouter.route('/addExam/:id').get(function (req, res) {
   const id = req.params.id;
   Course.findById(id, function (err, course){
-      res.render('editCourse', {course: course});
+    Room.find(function(err,room){
+      User.find(function(err,user){
+      res.render('createExam', {course: course,room: room,user: user,});
   });
+});
+});
 });
 
 module.exports = courseRouter;
