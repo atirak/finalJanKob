@@ -11,11 +11,12 @@ LoginRouter.post("/", (req, res) => {
     if (data.length > 0) {
       if (bcrypt.compareSync(req.body.pass, data[0].pass)) {
         if (data[0].type == 'student') {
-          res.render('homeStudent',{'data':JSON.stringify(data)})
+          res.render('homeStudent',{data:data,'data':JSON.stringify(data)})
         } else if (data[0].type == 'teacher') {
-          res.render('homeTeacher',{'data':JSON.stringify(data)})
+          res.render('homeTeacher',{data:data,'data':JSON.stringify(data)})
         } else if (data[0].type == 'official') {
-          res.render('home',{'data':JSON.stringify(data)})
+          res.render('home',{ data: data ,'data': JSON.stringify(data)})
+          console.log(data);
         }
 
       } else {
