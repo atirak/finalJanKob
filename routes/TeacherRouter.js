@@ -63,7 +63,6 @@ TeacherRouter.route('/update/:id').post(function (req, res) {
           return next(new Error('Could not load Document'));
       else {
           // do your updates here
-          var teacher = new Teacher();
           teacher.id = req.body.user;
           teacher.user = req.body.user,
           teacher.password = req.body.password,
