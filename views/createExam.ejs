@@ -166,17 +166,18 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">จัดสอบ</h1>
                                 </div>
-                                <form method="post" action="/manageCourse/post/">
+                                <form method="post" action="/manageCourse/saveExam/">
                                     <div class="form-group">
                                         <label for="item">เวลา</label>
                                         <div class="form-group">
-                                            <input type="datetime-local" id="meeting-time" name="meeting-time"
+                                            <input type="datetime-local" id="datetime" name="datetime"
                                                 >
+                                                
                                         </div>
 
                                         <label for="item">จำนวนชั่วโมงการสอบ</label>
                                         <div class="form-group">
-                                            <input type="number" min="1">
+                                            <input type="number" min="1" name="lengthTime">
                                         </div>
 
                                         <label for="item">เลือกผู้คุมสอบ</label>
@@ -186,8 +187,8 @@
                                                 <option hidden>เลือก</option>
                                                 <% for(var i=0; i < user.length; i++) { %>
                                                 <%if (user[i].type != "student") { %>
-                                                <option value="<%= user[i].name %> <%= user[i].lastname %> ">
-                                                    <%= user[i].name %> <%= user[i].lastname %>
+                                                <option value="<%= user[i].name %> <%= user[i].lastname%>">
+                                                    <%= user[i].name %> <%= user[i].lastname%>
                                                 </option>
                                                 <% } %>
                                                 <% } %>
@@ -200,31 +201,16 @@
                                                 readonly>
                                         </div>
 
-                                        <label for="item">เลือกประเภทห้อง</label>
-                                        <div class="form-group">
-                                            <select class="form-control" id="roomType" style="width:auto;">
-                                            <option hidden>เลือก</option>
-
-                                            <option value="Lab">
-                                                Lab
-                                            </option>
-                                            <option value="Lecture">
-                                                Lecture
-                                            </option>
-                                            </select>
-
-
-                                        </div>
 
                                         <label for="item">เลือกห้อง</label>
                                         <div class="form-group">
-                                            <select class="form-control" id="roomID" style="width:auto;">
+                                            <select class="form-control" id="roomID" style="width:auto;" name="room">
                                                 <option hidden>เลือก</option>
                                                 <% for(var i=0; i < room.length; i++) { %>
                                                    
                                                 <%if ((room[i].row*room[i].column) == Number(course.student)) { %>
-                                                <option value="<%= room[i].name %> ">
-                                                    <%= room[i].name %>
+                                                <option value="<%= room[i].name %>">
+                                                    <%= room[i].name%>      ประเภท <%=room[i].typeroom%>
                                                 </option>
                                                 
                                                 <% } %>
@@ -309,14 +295,12 @@
     <script src="/js/demo/chart-pie-demo.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
+        
         type = ""
         function set(type) {
             type = document.getElementById(type).value
         }
-
+        var boolean = true
         function Name(n1, n2, n3) {
             if (n3 === '1') {
                 var e = document.getElementById(n1);
@@ -325,7 +309,13 @@
             } else {
                 var e = document.getElementById(n1);
                 var name = e.options[e.selectedIndex].value;
-                document.getElementById(n2).value += name + ". ";
+                if(boolean){
+                    boolean=false;
+                    document.getElementById(n2).value += name;
+                }else{
+                    document.getElementById(n2).value += ","+name;
+                }
+                
             }
 
         }
