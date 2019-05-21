@@ -48,6 +48,20 @@ examRouter.route('/ajan').get(function (req, res) {
   });
 });
 
+examRouter.route('/official').get(function (req, res) {
+  User.findById(userid, function (err, user) {
+  Exam.find(function (err, Exam){
+      if(err){
+        console.log(err);
+      }
+      else {
+      
+        res.render('officialExam', {exam: Exam,user: user});
+      }
+    });
+  });
+});
+
 //---------------- create -------------
 examRouter.route('/create').get(function (req, res) {
   Teacher.find().then(teacher =>{

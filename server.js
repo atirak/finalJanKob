@@ -36,6 +36,7 @@ app.use('/manageExam',examRouter);
 app.use('/Term',TermRouter);
 app.use('/ajanExam',examRouter);
 app.use('/nisitExam',examRouter);
+app.use('/officialExam',examRouter);
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname,'public', 'index.html'));
 });
@@ -67,6 +68,9 @@ app.get('/homeStudent', (req, res) => {
 });
 app.get('/homeTeacher', (req, res) => {
   res.render('/homeTeacher');
+});
+app.get('/homeOfficial', (req, res) => {
+  res.render('homeOfficial');
 });
  app.get('/Term', (req, res) => {
   res.render('Term');
