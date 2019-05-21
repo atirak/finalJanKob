@@ -12,6 +12,13 @@ LoginRouter.route('/').get(function (req, res) {
 LoginRouter.route('/').get(function (req, res) {
   res.render('home', {data:''});
 });
+LoginRouter.route('/').get(function (req, res) {
+  res.render('homeStudent', {data:''});
+});
+LoginRouter.route('/').get(function (req, res) {
+  res.render('homeTeacher', {data:''});
+});
+userid=""
 LoginRouter.post("/", (req, res) => {
   User.find({ user: req.body.user }, function (err, data) {
     if (err) return err;
