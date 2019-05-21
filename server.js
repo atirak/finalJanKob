@@ -18,6 +18,7 @@ const OfficialRouter = require('./routes/OfficialRouter');
 const RoomRouter = require('./routes/RoomRouter');
 const examRouter = require('./routes/examRouter');
 const TermRouter = require('./routes/TermRouter');
+const homeRouter = require('./routes/homeRouter');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
@@ -36,6 +37,9 @@ app.use('/manageExam',examRouter);
 app.use('/Term',TermRouter);
 app.use('/ajanExam',examRouter);
 app.use('/nisitExam',examRouter);
+app.use('/homeStudent',homeRouter);
+app.use('/homeTeacher',homeRouter);
+app.use('/home',homeRouter);
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname,'public', 'index.html'));
 });

@@ -9,13 +9,14 @@ const Official = require('../models/Official.model');
 LoginRouter.route('/').get(function (req, res) {
   res.render('login', {ไม่ผ่าน:''});
 });
-
+userid=""
 LoginRouter.post("/", (req, res) => {
   User.find({ user: req.body.user }, function (err, data) {
     if (err) return err;
     if (data.length > 0) {
       if (bcrypt.compareSync(req.body.pass, data[0].pass)) {
         if (data[0].type == 'student') {
+          userid=data[0]._id
           res.render('homeStudent',{data:data,'data':JSON.stringify(data)})
         } else if (data[0].type == 'teacher') {
           res.render('homeTeacher',{data:data,'data':JSON.stringify(data)})
