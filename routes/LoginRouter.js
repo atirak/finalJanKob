@@ -27,6 +27,9 @@ LoginRouter.post("/", (req, res) => {
         res.render('login',{ไม่ผ่าน:'ไม่ผ่าน'});
         console.log('ไม่ผ่าน')
       }
+    }else{
+      res.render('login',{ไม่ผ่าน:'ไม่ผ่าน'});
+        console.log('ไม่ผ่าน')
     }
   })
 });

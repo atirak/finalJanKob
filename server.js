@@ -34,9 +34,6 @@ app.use('/manageOfficial',OfficialRouter);
 app.use('/manageRoom',RoomRouter);
 app.use('/manageExam',examRouter);
 app.use('/Term',TermRouter);
-
-app.use('/ajanExam',examRouter);
-app.use('/nisitExam',examRouter);
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname,'public', 'index.html'));
 });
@@ -65,12 +62,6 @@ app.get('/login', (req, res) => {
 });
  app.get('/Term', (req, res) => {
   res.render('Term');
- });
- app.get('/homeStudent', (req, res) => {
-  res.render('homeStudent');
- });
- app.get('/homeTeacher', (req, res) => {
-  res.render('homeTeacher');
  });
  app.listen(port, function(){
   console.log('Node js Express js Tutorial at port', port);
