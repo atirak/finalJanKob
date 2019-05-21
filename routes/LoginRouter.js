@@ -5,6 +5,11 @@ const User = require('../models/User.model');
 const Student = require('../models/Student.model');
 const Teacher = require('../models/Teacher.model');
 const Official = require('../models/Official.model');
+
+LoginRouter.route('/').get(function (req, res) {
+  res.render('login', {ไม่ผ่าน:''});
+});
+
 LoginRouter.post("/", (req, res) => {
   User.find({ user: req.body.user }, function (err, data) {
     if (err) return err;
