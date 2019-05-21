@@ -9,8 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>นิสิต-ดูตารางสอบ</title>
-
+  <title>Official - ดูตางรางคุมสอบ</title>
   <!-- Custom fonts for this template -->
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
@@ -34,20 +33,22 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/homeStudent">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/homeTeacher">
         <div class="sidebar-brand-icon">
           <i class="fas fa-users-cog"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">student</div>
+        <div class="sidebar-brand-text mx-3">Official</div>
       </a>
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Pages จัดการบุคคลากร Menu -->
+      
+
       <li class="nav-item">
-        <a class="nav-link" href="/manageExam/nisit">
+        <a class="nav-link" href="/manageExam/ajanExam">
             <i class="fas fa-fw fa-table"></i>
-            <span>ดูตารางสอบ</span></a>
+            <span>ดูตางรางคุมสอบ</span></a>
     </li>
   
 
@@ -137,33 +138,31 @@
                   </thead>
                   <tbody>
                     <% for(var i=0; i < exam.length; i++) { %>
-                      <% for(var j=0; j < exam[i].student.length; j++) { %>
-                      <%if (exam[i].student[j] == user.user) { %>
+                      <% for(var j=0; j < exam[i].examiner.length; j++) { %>
+                        <%if (exam[i].examiner[j] == user.name+" "+user.lastname) { %>
+                    <tr>
+                      <td>
+                        <%= exam[i].subjectName%>
+                      </td>
+                      <td>
+                        <%= exam[i].group%>
+                      </td>
                       
-                       
-                      <tr>
-                        <td>
-                          <%= exam[i].subjectName%>
+                      <td>
+                        <%= exam[i].timeStart %>-<%= exam[i].timeStop %>
+                      </td>
+                      <td>
+                          <%= exam[i].date %>
                         </td>
                         <td>
-                          <%= exam[i].group%>
+                          <%= exam[i].room %>
                         </td>
-                        
-                        <td>
-                          <%= exam[i].timeStart %>-<%= exam[i].timeStop %>
-                        </td>
-                        <td>
-                            <%= exam[i].date %>
-                          </td>
-                          <td>
-                            <%= exam[i].room %>
-                          </td>
-  
-                        
-                      </tr>
-                      <% } %>
-                      <% } %>
-                      <% } %>
+
+                      
+                    </tr>
+                    <% } %>
+                    <% } %>
+                    <% } %>
                   </tbody>
                 </table>
               </div>

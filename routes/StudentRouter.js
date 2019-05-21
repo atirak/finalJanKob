@@ -35,6 +35,7 @@ StudentRouter.route('/post').post(function (req, res) {
   student.password = bcryp.hashSync(student.password, 5);
   student.save().then(student => {
     var user = new User();
+    user.id = student._id
     user.user = student.user
     user.pass = student.password
     user.name = student.firstname
@@ -54,7 +55,13 @@ StudentRouter.route('/post').post(function (req, res) {
 StudentRouter.route('/delete/:id').get(function (req, res) {
   Student.findByIdAndRemove({ _id: req.params.id }, function (err, student) {
     if (err) res.json(err);
-    else res.redirect('/manageStudent');
+    else
+    User.deleteOne({id:req.params.id},
+      function (err,user){
+        if (err) res.json(err);
+        else
+        res.redirect('/manageTeacher');
+      });
   });
 });
 

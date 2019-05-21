@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>จัดการอาจารย์</title>
+    <title>Admin-จัดการอาจารย์</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-users-cog"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">official</div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -180,7 +180,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>รหัสเจ้าหน้าที่</th>
+                                            <th>ลำดับ</th>
                                             <th>ชื่อ - นามสกุล</th>
                                             <th>ตำแหน่ง</th>
                                             <th>จัดการ</th>
@@ -190,7 +190,7 @@
                                         <% for(var i=0; i < official.length; i++) { %>
                                         <tr>
                                             <td>
-                                                <%= official[i].id %>
+                                                <%= i+1 %>
                                             </td>
                                             <td>
                                                 <%= official[i].firstname %> <%= official[i].lastname %>

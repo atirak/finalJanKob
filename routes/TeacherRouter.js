@@ -34,9 +34,10 @@ TeacherRouter.route('/post').post(function (req, res) {
   teacher.password = bcryp.hashSync(teacher.password,5);
   teacher.save().then(teacher => {
     var user = new User();
+    user.id = teacher._id
     user.user =  teacher.user
     user.pass = teacher.password
-    user.firstname = teacher.firstname
+    user.name = teacher.firstname
     user.lastname = teacher.lastname
     user.type = "teacher"
     user.pass = teacher.password
@@ -87,7 +88,13 @@ TeacherRouter.route('/delete/:id').get(function (req, res) {
   Teacher.findByIdAndRemove({ _id: req.params.id },
       function (err, Teacher) {
           if (err) res.json(err);
-          else res.redirect('/manageTeacher');
+          else 
+          User.deleteOne({id:req.params.id},
+            function (err,user){
+              if (err) res.json(err);
+              else
+              res.redirect('/manageTeacher');
+            });
       });
 });
 module.exports = TeacherRouter;

@@ -34,6 +34,7 @@ OfficialRouter.route('/post').post(function (req, res) {
     official.password = bcryp.hashSync(official.password, 5);
   official.save().then(official => {
     var user = new User();
+    user.id = official._id
     user.user = official.user
     user.pass = official.password
     user.name = official.firstname
@@ -53,7 +54,14 @@ OfficialRouter.route('/post').post(function (req, res) {
 OfficialRouter.route('/delete/:id').get(function (req, res) {
   Official.findByIdAndRemove({ _id: req.params.id }, function (err, official) {
     if (err) res.json(err);
-    else res.redirect('/manageOfficial');
+    else 
+    User.deleteOne({id:req.params.id},
+      function (err,user){
+        if (err) res.json(err);
+        else
+        res.redirect('/manageOfficial');
+      });
+     
   });
 });
 

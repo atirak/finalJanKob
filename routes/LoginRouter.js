@@ -32,8 +32,10 @@ LoginRouter.post("/", (req, res) => {
           res.render('homeTeacher',{data:data,'data':JSON.stringify(data)})
         } else if (data[0].type == 'official') {
           userid=data[0]._id
-          res.render('home',{ data: data ,'data': JSON.stringify(data)})
+          res.render('homeOfficial',{ data: data ,'data': JSON.stringify(data)})
           console.log(data);
+        }else if(data[0].type == 'admin'){
+          res.render('home',{ data: data ,'data': JSON.stringify(data)})
         }
       } else {
         res.render('login',{ไม่ผ่าน:'พาสผิด'});
