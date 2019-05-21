@@ -21,6 +21,28 @@ examRouter.route('/').get(function (req, res) {
     });
 });
 
+examRouter.route('/nisit').get(function (req, res) {
+  Exam.find(function (err, Exam){
+      if(err){
+        console.log(err);
+      }
+      else {
+        res.render('nisitExam', {exam: Exam});
+      }
+    });
+});
+
+examRouter.route('/ajan').get(function (req, res) {
+  Exam.find(function (err, Exam){
+      if(err){
+        console.log(err);
+      }
+      else {
+        res.render('ajanExam', {exam: Exam});
+      }
+    });
+});
+
 //---------------- create -------------
 examRouter.route('/create').get(function (req, res) {
   Teacher.find().then(teacher =>{
