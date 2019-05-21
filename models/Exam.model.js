@@ -10,7 +10,8 @@ const Exam= new Schema({
     timeStart: { type: String},
     timeStop: { type: String},
     room: { type: String},
-    group: { type: String}
+    group: { type: String},
+    student: { type: [String] }
 },{
     collection: 'exam'
 });

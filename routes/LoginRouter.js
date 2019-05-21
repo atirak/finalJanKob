@@ -18,6 +18,7 @@ LoginRouter.post("/", (req, res) => {
     if (data.length > 0) {
       if (bcrypt.compareSync(req.body.pass, data[0].pass)) {
         if (data[0].type == 'student') {
+          userid=data[0]._id
           res.render('homeStudent',{data:data,'data':JSON.stringify(data)})
         } else if (data[0].type == 'teacher') {
           res.render('homeTeacher',{data:data,'data':JSON.stringify(data)})
