@@ -88,7 +88,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/manageExam">
-                  <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการการสอบ</span></a>
             </li>
             <!-- Nav Item - Tables -->
@@ -97,7 +97,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>ปีการศึกษา</span></a>
             </li>
-           
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -138,7 +138,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                       
+
 
                     </ul>
 
@@ -159,9 +159,8 @@
                                     <div class="form-group">
                                         <label for="item">เวลา</label>
                                         <div class="form-group">
-                                            <input type="datetime-local" id="datetime" name="datetime"
-                                                >
-                                                
+                                            <input type="datetime-local" id="datetime" name="datetime">
+
                                         </div>
 
                                         <label for="item">จำนวนชั่วโมงการสอบ</label>
@@ -197,7 +196,7 @@
                                                 <option value="<%= group[i].groupID %>">
                                                     <%= group[i].groupID%>
                                                 </option>
-                                                
+
                                                 <% } %>
                                             </select>
 
@@ -208,12 +207,12 @@
                                             <select class="form-control" id="roomID" style="width:auto;" name="room">
                                                 <option hidden>เลือก</option>
                                                 <% for(var i=0; i < room.length; i++) { %>
-                                                   
+
                                                 <%if ((room[i].row*room[i].column) >= Number(group[0].student.length)) { %>
                                                 <option value="<%= room[i].name %>">
-                                                    <%= room[i].name%>      ประเภท <%=room[i].typeroom%>
+                                                    <%= room[i].name%> ประเภท <%=room[i].typeroom%>
                                                 </option>
-                                                
+
                                                 <% } %>
                                                 <% } %>
                                             </select>
@@ -296,7 +295,7 @@
     <script src="/js/demo/chart-pie-demo.js"></script>
 
     <script>
-        
+
         type = ""
         function set(type) {
             type = document.getElementById(type).value
@@ -310,17 +309,16 @@
             } else {
                 var e = document.getElementById(n1);
                 var name = e.options[e.selectedIndex].value;
-                if(boolean){
-                    boolean=false;
+                if (boolean) {
+                    boolean = false;
                     document.getElementById(n2).value += name;
-                }else{
-                    document.getElementById(n2).value += ","+name;
+                } else {
+                    document.getElementById(n2).value += "," + name;
                 }
-                
+
             }
 
         }
-
     </script>
 </body>
 

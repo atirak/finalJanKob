@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/manageExam">
-                  <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการการสอบ</span></a>
             </li>
             <!-- Nav Item - Tables -->
@@ -102,7 +102,7 @@
                     <span>ปีการศึกษา</span></a>
             </li>
 
-          
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -143,7 +143,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                       
+
 
                     </ul>
 
@@ -160,7 +160,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">เพิ่มข้อมูลอาจารย์</h1>
                                 </div>
-                                <form method="post" action="/manageTeacher/post/">
+                                <form id="save" method="post" action="/manageTeacher/post/">
                                     <div class="form-group">
                                         <label for="item">Username</label>
                                         <input type="text" class="form-control" id="user" name="user">
@@ -185,7 +185,7 @@
                                         <label for="item">สาขา</label>
                                         <input type="text" class="form-control" id="major" name="major">
                                     </div>
-                                    <button type="submit" class="btn btn-success">บันทึก</button>
+                                    <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageTeacher" class="btn btn-danger">ยกเลิก</a>
                                     <hr>
                                 </form>
@@ -257,8 +257,19 @@
     <!--ajax scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-     <!-- main scripts -->
+    <!-- main scripts -->
     <script src="main.js"></script>
+    <script>
+        function checknull() {
+            if (document.getElementById('user').value == "" || document.getElementById('password').value == "" ||
+                document.getElementById('firstname').value == "" || document.getElementById('lastname').value == "" ||
+                document.getElementById('faculty').value == "" ||document.getElementById('major').value == "") {
+                alert('กรุณากรอกข้อมูลให้ครบ')
+            } else {
+                document.getElementById('save').submit();
+            }
+        }
+    </script>
 
 </body>
 
