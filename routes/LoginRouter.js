@@ -18,12 +18,14 @@ LoginRouter.post("/", (req, res) => {
           res.render('home',{ data: data ,'data': JSON.stringify(data)})
           console.log(data);
         }
-
       } else {
-        res.render('login');
+        res.render('login',{ไม่ผ่าน:'ไม่ผ่าน'});
+        console.log('ไม่ผ่าน')
       }
+    }else{
+      res.render('login',{ไม่ผ่าน:'ไม่ผ่าน'});
+        console.log('ไม่ผ่าน')
     }
-    
   })
 });
 module.exports = LoginRouter;
