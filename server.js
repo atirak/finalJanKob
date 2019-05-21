@@ -66,6 +66,12 @@ app.get('/login', (req, res) => {
  app.get('/Term', (req, res) => {
   res.render('Term');
  });
+ app.get('/homeStudent', (req, res) => {
+  res.render('homeStudent');
+ });
+ app.get('/homeTeacher', (req, res) => {
+  res.render('homeTeacher');
+ });
  app.listen(port, function(){
   console.log('Node js Express js Tutorial at port', port);
 });
