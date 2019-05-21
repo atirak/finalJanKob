@@ -185,6 +185,9 @@
                                         <label for="item">สาขา</label>
                                         <input type="text" class="form-control" id="major" name="major">
                                     </div>
+                                    <div class="form-group">
+                                            <p id="demo"></p>
+                                    </div>
                                     <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageTeacher" class="btn btn-danger">ยกเลิก</a>
                                     <hr>
@@ -258,13 +261,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- main scripts -->
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
     <script>
         function checknull() {
             if (document.getElementById('user').value == "" || document.getElementById('password').value == "" ||
                 document.getElementById('firstname').value == "" || document.getElementById('lastname').value == "" ||
                 document.getElementById('faculty').value == "" ||document.getElementById('major').value == "") {
-                alert('กรุณากรอกข้อมูลให้ครบ')
+                    document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
+                    // alert('กรุณากรอกข้อมูลให้ครบ')
             } else {
                 document.getElementById('save').submit();
             }

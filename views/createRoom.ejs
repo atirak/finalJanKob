@@ -193,6 +193,9 @@
                                         <label for="item">จำนวนคอลัม</label>
                                         <input type="text" class="form-control" id="column" name="column">
                                     </div>
+                                    <div class="form-group">
+                                            <p id="demo"></p>
+                                    </div>
                                     <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageRoom" class="btn btn-danger">ยกเลิก</a>
                                 </form>
@@ -265,7 +268,8 @@
 
         function checknull() {
             if (document.getElementById('namebuild').value == "" || document.getElementById('name').value == "" || document.getElementById('typeroom').value == ""|| document.getElementById('row').value == ""|| document.getElementById('column').value == "") {
-                alert('กรุณากรอกข้อมูลให้ครบ')
+                document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
+                // alert('กรุณากรอกข้อมูลให้ครบ')
             } else {
                 document.getElementById("save").submit();
             }

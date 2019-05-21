@@ -165,7 +165,7 @@
 
                                         <label for="item">จำนวนชั่วโมงการสอบ</label>
                                         <div class="form-group">
-                                            <input id="lengtime" type="number" min="1" name="lengthTime">
+                                            <input id="lengtime" type="number" id="lengtime" min="1" name="lengthTime">
                                         </div>
 
                                         <label for="item">เลือกผู้คุมสอบ</label>
@@ -206,12 +206,9 @@
                                             </select>
 
                                         </div>
-
-
-
-
-
-
+                                        <div class="form-group">
+                                                <p id="demo"></p>
+                                        </div>
                                         <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                         <a href="/manageExam" class="btn btn-danger">ยกเลิก</a>
                                     </div>
@@ -287,7 +284,8 @@
     <script>
          function checknull() {
             if (document.getElementById('datetime').value == "" || document.getElementById('lengtime').value == "" || document.getElementById('userName').value == "" || document.getElementById('roomID').value == "") {
-                alert('กรุณากรอกข้อมูลให้ครบ')
+                document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
+                // alert('กรุณากรอกข้อมูลให้ครบ')
             } else {
                 document.getElementById("save").submit();
             }
