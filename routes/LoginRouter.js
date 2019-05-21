@@ -20,7 +20,7 @@ LoginRouter.post("/", (req, res) => {
         }
 
       } else {
-        res.redirect('login')
+        res.render('login');
       }
     }
     

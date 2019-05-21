@@ -233,7 +233,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <!-- main scripts -->
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script>
+function showUser(){
+// document.getElementById('showUser').innerHTML = sessionStorage.getItem("name")
+$('#showUser').text("ยินดีต้อนรับคุณ : " + sessionStorage.getItem("name"));
+console.log("555")
+}
+    </script>
 </body>
 
 </html>

@@ -159,7 +159,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">เพิ่มคอส</h1>
                                 </div>
-                                <form method="post" action="/manageCourse/post/">
+                                <form id="save" method="post" action="/manageCourse/post/">
                                     <div class="form-group">
                                         <label for="item">รหัสวิชา</label>
                                         <div class="form-group">
@@ -209,7 +209,7 @@
                                         <input type="number" class="form-control" id="student" name="student" >
                                     </div>
                                    
-                                    <button type="submit" class="btn btn-success">บันทึก</button>
+                                    <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
                             </div>
 
@@ -301,6 +301,13 @@
             }
 
         }
+        function checknull(){
+    if(document.getElementById('student').value == "" || document.getElementById('group').value == ""){
+      alert('กรุณากรอกข้อมูลให้ครบ')
+    }else{
+      document.getElementById('save').submit();
+    }
+   }
     </script>
 </body>
 

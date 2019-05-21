@@ -159,7 +159,7 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">เพิ่มรายวิชา</h1>
                 </div>
-                <form method="post" action="/manageSubject/post/">
+                <form id="save" method="post" action="/manageSubject/post/">
                   <div class="form-group">
                     <label for="item">รหัสวิชา</label>
                     <input type="text" class="form-control" id="id" name="id">
@@ -168,7 +168,7 @@
                     <label for="item">รายวิชา</label>
                     <input type="text" class="form-control" id="namesubject" name="namesubject">
                   </div>
-                  <button type="submit" class="btn btn-success">บันทึก</button>
+                  <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                   <a href="/manageSubject" class="btn btn-danger">ยกเลิก</a>
                   <hr>
                 </form>
@@ -242,6 +242,15 @@
 
   <!-- main scripts -->
  <script src="main.js"></script>
+ <script>
+    function checknull() {
+        if (document.getElementById('id').value == "" || document.getElementById('namesubject').value == "" ) {
+            alert('กรุณากรอกข้อมูลให้ครบ')
+        } else {
+            document.getElementById("save").submit();
+        }
+    }
+</script>
 
 </body>
 

@@ -159,7 +159,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">เพิ่มข้อมูลนิสิต</h1>
                                 </div>
-                                <form method="post" action="/manageStudent/post/">
+                                <form id="save" method="post" action="/manageStudent/post/">
                                     <div class="form-group">
                                         <label for="item">Username</label>
                                         <input type="text" class="form-control" id="user" name="user">
@@ -188,7 +188,7 @@
                                         <label for="item">สาขา</label>
                                         <input type="text" class="form-control" id="major" name="major">
                                     </div>
-                                    <button type="submit" class="btn btn-success">บันทึก</button>
+                                    <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageStudent" class="btn btn-danger">ยกเลิก</a>
                                     <hr>
                                 </form>
@@ -262,7 +262,18 @@
 
      <!-- main scripts -->
     <script src="main.js"></script>
-
+<script>
+    function checknull(){
+    if(document.getElementById('user').value == "" || document.getElementById('password').value == "" ||
+    document.getElementById('firstname').value == "" || document.getElementById('lastname').value == ""||
+    document.getElementById('tier').value == ""||document.getElementById('faculty').value == "" ||
+    document.getElementById('major').value == ""){
+      alert('กรุณากรอกข้อมูลให้ครบ')
+    }else{
+      document.getElementById('save').submit();
+    }
+   }
+</script>
 </body>
 
 </html>

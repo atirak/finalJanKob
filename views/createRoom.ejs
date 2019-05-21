@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/manageExam">
-                  <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการการสอบ</span></a>
             </li>
             <!-- Nav Item - Tables -->
@@ -101,7 +101,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>ปีการศึกษา</span></a>
             </li>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -142,7 +142,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                       
+
 
                     </ul>
 
@@ -159,14 +159,16 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">เพิ่มห้อง</h1>
                                 </div>
-                                <form method="post" action="/manageRoom/post/">
+                                <form id="save" method="post" action="/manageRoom/post/">
                                     <div class="form-group">
                                         <label for="item">ตึก</label>
                                         <div class="form-group">
-                                            <select class="form-control" id="namebuild" name="namebuild" style="width:auto;">
+                                            <select class="form-control" id="namebuild" name="namebuild"
+                                                style="width:auto;">
                                                 <option hidden>เลือก</option>
                                                 <% for(var i=0; i < build.length; i++) { %>
-                                                <option value="<%= build[i].namefull %>"><%= build[i].namefull %></option>
+                                                <option value="<%= build[i].namefull %>"><%= build[i].namefull %>
+                                                </option>
                                                 <% } %>
                                             </select>
                                         </div>
@@ -191,18 +193,17 @@
                                         <label for="item">จำนวนคอลัม</label>
                                         <input type="text" class="form-control" id="column" name="column">
                                     </div>
-                            <hr>
-                            <button type="submit" class="btn btn-success">บันทึก</button>
-                            <a href="/manageRoom" class="btn btn-danger">ยกเลิก</a>
-                            </form>
+                                    <a onclick="checknull()" class="btn btn-success">บันทึก</a>
+                                    <a href="/manageRoom" class="btn btn-danger">ยกเลิก</a>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
-
-
-    </div>
     </div>
 
     </div>
@@ -261,6 +262,16 @@
     <script src="/js/demo/chart-pie-demo.js"></script>
 
     <script>
+
+        function checknull() {
+            if (document.getElementById('namebuild').value == "" || document.getElementById('name').value == "" || document.getElementById('typeroom').value == ""|| document.getElementById('row').value == ""|| document.getElementById('column').value == "") {
+                alert('กรุณากรอกข้อมูลให้ครบ')
+            } else {
+                document.getElementById("save").submit();
+            }
+        }
+
+
         function Name(n1, n2, n3) {
             if (n3 === '1') {
                 var e = document.getElementById(n1);
@@ -273,6 +284,7 @@
             }
 
         }
+
     </script>
 </body>
 
