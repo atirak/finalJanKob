@@ -41,6 +41,7 @@ examRouter.route('/ajan').get(function (req, res) {
         console.log(err);
       }
       else {
+        console.log(user)
         res.render('ajanExam', {exam: Exam,user: user});
       }
     });

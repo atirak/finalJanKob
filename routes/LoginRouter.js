@@ -19,8 +19,10 @@ LoginRouter.post("/", (req, res) => {
           userid=data[0]._id
           res.render('homeStudent',{data:data,'data':JSON.stringify(data)})
         } else if (data[0].type == 'teacher') {
+          userid=data[0]._id
           res.render('homeTeacher',{data:data,'data':JSON.stringify(data)})
         } else if (data[0].type == 'official') {
+          userid=data[0]._id
           res.render('home',{ data: data ,'data': JSON.stringify(data)})
           console.log(data);
         }

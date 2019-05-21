@@ -139,8 +139,8 @@
                   </thead>
                   <tbody>
                     <% for(var i=0; i < exam.length; i++) { %>
-                     
-                        <%if (exam[i].examiner == user.name+" "+user.lname) { %>
+                      <% for(var j=0; j < exam[i].examiner.length; j++) { %>
+                        <%if (exam[i].examiner[j] == user.name+" "+user.lastname) { %>
                     <tr>
                       <td>
                         <%= exam[i].subjectName%>
@@ -161,6 +161,7 @@
 
                       
                     </tr>
+                    <% } %>
                     <% } %>
                     <% } %>
                   </tbody>
