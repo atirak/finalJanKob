@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
 const homeRouter = express.Router();
-const Emp = require('../models/personel.model');
+userid=""
 homeRouter.route('/').get(function (req, res) {
   res.render('home');
+});
+homeRouter.route('/ajan').get(function (req, res) {
+  res.render('homeTeacher');
+});
+homeRouter.route('/nisit').get(function (req, res) {
+  res.render('homeStudent');
 });
 module.exports = homeRouter;

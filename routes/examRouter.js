@@ -9,7 +9,7 @@ const Room = require('../models/Room.model');
 const User = require('../models/User.model');
 const Exam = require('../models/Exam.model');
 
-
+userid=""
 examRouter.route('/').get(function (req, res) {
   Exam.find(function (err, Exam){
       if(err){
@@ -22,26 +22,30 @@ examRouter.route('/').get(function (req, res) {
 });
 
 examRouter.route('/nisit').get(function (req, res) {
+  User.findById(userid, function (err, user) {
   Exam.find(function (err, Exam){
       if(err){
         console.log(err);
       }
       else {
-        res.render('nisitExam', {exam: Exam});
+        res.render('nisitExam', {exam: Exam,user: user});
       }
     });
+  });
 });
 
 examRouter.route('/ajan').get(function (req, res) {
+  User.findById(userid, function (err, user) {
   Exam.find(function (err, Exam){
       if(err){
         console.log(err);
       }
       else {
-        console.log(user)
+      
         res.render('ajanExam', {exam: Exam,user: user});
       }
     });
+  });
 });
 
 //---------------- create -------------
