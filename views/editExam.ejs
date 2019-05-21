@@ -154,7 +154,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">จัดสอบ</h1>
                                 </div>
-                                <form method="post" action="/manageExam/update/<%= exam._id%>">
+                                <form id="save" method="post" action="/manageExam/update/<%= exam._id%>">
                                     <div class="form-group">
                                         <label for="item">เวลา</label>
                                         <div class="form-group">
@@ -165,7 +165,7 @@
 
                                         <label for="item">จำนวนชั่วโมงการสอบ</label>
                                         <div class="form-group">
-                                            <input type="number" min="1" name="lengthTime">
+                                            <input id="lengtime" type="number" min="1" name="lengthTime">
                                         </div>
 
                                         <label for="item">เลือกผู้คุมสอบ</label>
@@ -212,7 +212,7 @@
 
 
 
-                                        <button type="submit" class="btn btn-success">บันทึก</button>
+                                        <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                         <a href="/manageExam" class="btn btn-danger">ยกเลิก</a>
                                     </div>
 
@@ -285,7 +285,13 @@
     <script src="/js/demo/chart-pie-demo.js"></script>
 
     <script>
-        
+         function checknull() {
+            if (document.getElementById('datetime').value == "" || document.getElementById('lengtime').value == "" || document.getElementById('userName').value == "" || document.getElementById('roomID').value == "") {
+                alert('กรุณากรอกข้อมูลให้ครบ')
+            } else {
+                document.getElementById("save").submit();
+            }
+        }
         type = ""
         function set(type) {
             type = document.getElementById(type).value

@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/manageExam">
-                  <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการการสอบ</span></a>
             </li>
             <!-- Nav Item - Tables -->
@@ -101,7 +101,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>ปีการศึกษา</span></a>
             </li>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -142,7 +142,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        
+
 
                     </ul>
 
@@ -159,12 +159,12 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">แก้ไขคอร์ส</h1>
                                 </div>
-                                <form method="post" action="/manageCourse/update/<%= course._id%>">
+                                <form id="save" method="post" action="/manageCourse/update/<%= course._id%>">
                                     <div class="form-group">
                                         <label for="item">รหัสวิชา <%= course.subjectName %></label>
-                                       
+
                                     </div>
-                                    
+
                                     <label for="item">เลือกอาจารย์</label>
                                     <div class="form-group">
                                         <select class="form-control" id="teachID"
@@ -186,17 +186,17 @@
 
                                     <label for="item">จำนวนกลุ่ม</label>
                                     <div class="form-group">
-                                        
-                                            <input type="number" class="form-control" id="group" name="group" >
-                                        
+
+                                        <input type="number" class="form-control" id="group" name="group">
+
 
                                     </div>
                                     <div class="form-group">
                                         <label for="item">จำนวนคนแต่ละกลุ่ม</label>
-                                        <input type="number" class="form-control" id="student" name="student" >
+                                        <input type="number" class="form-control" id="student" name="student">
                                     </div>
-                                   
-                                    <button type="submit" class="btn btn-success">บันทึก</button>
+
+                                    <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
                             </div>
 
@@ -269,6 +269,13 @@
     <script src="/js/demo/chart-pie-demo.js"></script>
     <script src="xlsx.full.min.js"></script>
     <script>
+        function checknull() {
+            if (document.getElementById('teacherName').value == "" || document.getElementById('group').value == "" || document.getElementById('student').value == "") {
+                alert('กรุณากรอกข้อมูลให้ครบ')
+            } else {
+                document.getElementById("save").submit();
+            }
+        }
         var boolean = true
         function Name(n1, n2, n3) {
             if (n3 === '1') {
@@ -278,13 +285,13 @@
             } else {
                 var e = document.getElementById(n1);
                 var name = e.options[e.selectedIndex].value;
-                if(boolean){
-                    boolean=false;
+                if (boolean) {
+                    boolean = false;
                     document.getElementById(n2).value += name;
-                }else{
-                    document.getElementById(n2).value += ","+name;
+                } else {
+                    document.getElementById(n2).value += "," + name;
                 }
-                
+
             }
 
         }

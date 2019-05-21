@@ -156,7 +156,7 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">แก้ไขรายวิชา</h1>
                 </div>
-                <form method="post" action="/manageSubject/update/<%= subject._id %>">
+                <form id="save" method="post" action="/manageSubject/update/<%= subject._id %>">
                   <div class="form-group">
                     <label for="item">รหัสวิชา</label>
                     <input type="text" class="form-control" id="id" name="id" value="<%= subject.id %>">
@@ -166,7 +166,7 @@
                     <input type="text" class="form-control" id="namesubject" name="namesubject"
                       value="<%= subject.namesubject %>">
                   </div>
-                  <button type="submit" class="btn btn-success">บันทึก</button>
+                  <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                   <a href="/manageSubject" class="btn btn-danger">ยกเลิก</a>
                   <hr>
                 </form>
@@ -241,6 +241,15 @@
 
   <!-- main scripts -->
  <script src="main.js"></script>
+ <script>
+    function checknull() {
+        if (document.getElementById('id').value == "" || document.getElementById('namesubject').value == "" ) {
+            alert('กรุณากรอกข้อมูลให้ครบ')
+        } else {
+            document.getElementById("save").submit();
+        }
+    }
+</script>
 
 </body>
 

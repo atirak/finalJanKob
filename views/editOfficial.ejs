@@ -159,7 +159,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">แก้ไขข้อมูลเจ้าหน้าที่</h1>
                                 </div>
-                                <form method="post" action="/manageOfficial/update/<%= official._id %>">
+                                <form id="save" method="post" action="/manageOfficial/update/<%= official._id %>">
                                     <div class="form-group">
                                         <label for="item">ชื่อ</label>
                                         <input type="text" class="form-control" id="firstname" name="firstname"
@@ -175,7 +175,7 @@
                                         <input type="text" class="form-control" id="status" name="status"
                                             value="<%= official.status %>">
                                     </div>
-                                    <button type="submit" class="btn btn-success">บันทึก</button>
+                                    <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageOfficial" class="btn btn-danger">ยกเลิก</a>
                                     <hr>
                                 </form>
@@ -249,6 +249,15 @@
 
      <!-- main scripts -->
     <script src="js/main.js"></script>
+    <script>
+        function checknull() {
+            if (document.getElementById('firstname').value == "" || document.getElementById('lastname').value == "" || document.getElementById('status').value == "" ) {
+                alert('กรุณากรอกข้อมูลให้ครบ')
+            } else {
+                document.getElementById("save").submit();
+            }
+        }
+    </script>
 </body>
 
 </html>
