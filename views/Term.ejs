@@ -91,7 +91,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/manageExam">
-                  <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการการสอบ</span></a>
             </li>
             <!-- Nav Item - Tables -->
@@ -147,7 +147,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span id="showUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                <span id="showUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie
+                                    Luna</span>
                                 <i class="fas fa-user fa-sm fa-fw"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -168,48 +169,51 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
-                    <form method="post" action="/Term/post">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">ปีการศึกษา</h1>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="item">ปีการศึกษา</label>
-                                <input type="text" class="form-control" id="year" name="year">
+                    <form id="save" method="post" action="/Term/post">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">ปีการศึกษา</h1>
                             </div>
-                            <div class="form-group">
-                                <label for="item">ภาคเรียน</label>
-                                <select class="form-control" id="term" name="term">
-                                            <option hidden>เลือก</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="summer">summer</option>
-                                        </select>
-                            </div>
-                            <button type="submit" class="btn btn-success">บันทึก</button>
-                        </form>
-                        </div>
-                    </div>
-
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="item">ปีการศึกษา</label>
+                                    <input type="text" class="form-control" id="year" name="year">
+                                </div>
+                                <div class="form-group">
+                                    <label for="item">ภาคเรียน</label>
+                                    <select class="form-control" id="term" name="term">
+                                        <option hidden>เลือก</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="summer">summer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <p id="demo"></p>
+                                </div>
+                                <a onclick="checknull()" class="btn btn-success">บันทึก</a>
+                    </form>
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2019</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -259,9 +263,18 @@
     <!--ajax scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-     <!-- main scripts -->
+    <!-- main scripts -->
     <script src="js/main.js"></script>
-
+    <script>
+        function checknull() {
+            if (document.getElementById('year').value == "" || document.getElementById('term').value == "") {
+                document.getElementById("demo").innerHTML = '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
+                //   alert('กรุณากรอกข้อมูลให้ครบ')
+            } else {
+                document.getElementById('save').submit();
+            }
+        }
+    </script>
 </body>
 
 </html>
