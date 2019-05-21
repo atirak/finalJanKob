@@ -161,7 +161,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">แก้ไขข้อมูลอาจารย์</h1>
                                 </div>
-                                <form method="post" action="/manageTeacher/update/<%= teacher._id%>">
+                                <form id="save" method="post" action="/manageTeacher/update/<%= teacher._id%>">
                                     <div class="form-group">
                                         <label for="item">ชื่อ</label>
                                         <input type="text" class="form-control" id="firstname" name="firstname" value="<%= teacher.firstname%>">
@@ -178,7 +178,7 @@
                                         <label for="item">สาขา</label>
                                         <input type="text" class="form-control" id="major" name="major" value="<%= teacher.major%>">
                                     </div>
-                                    <button type="submit" class="btn btn-success">บันทึก</button>
+                                    <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageTeacher" class="btn btn-danger">ยกเลิก</a>
                                     <hr>
                                 </form>
@@ -252,6 +252,15 @@
 
      <!-- main scripts -->
     <script src="js/main.js"></script>
+    <script>
+            function checknull() {
+                if (document.getElementById('firstname').value == "" || document.getElementById('lastname').value == "" || document.getElementById('lastname').value == "faculty" || document.getElementById('lastname').value == "major" ) {
+                    alert('กรุณากรอกข้อมูลให้ครบ')
+                } else {
+                    document.getElementById("save").submit();
+                }
+            }
+        </script>
 
 </body>
 

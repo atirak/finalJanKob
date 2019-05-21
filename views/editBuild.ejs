@@ -158,7 +158,7 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">แก้ไขตึก</h1>
                 </div>
-                <form method="post" action="/manageBuild/update/<%= build._id %>">
+                <form id="save" method="post" action="/manageBuild/update/<%= build._id %>">
                   <div class="form-group">
                     <label for="item">ชื่อย่อ</label>
                     <input type="text" class="form-control" id="name" name="name" value="<%= build.name %>">
@@ -168,7 +168,7 @@
                     <input type="text" class="form-control" id="namefull" name="namefull"
                       value="<%= build.namefull %>">
                   </div>
-                  <button type="submit" class="btn btn-success">บันทึก</button>
+                  <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                   <a href="/manageBuild" class="btn btn-danger">ยกเลิก</a>
                   <hr>
                 </form>
@@ -243,6 +243,16 @@
 
   <!-- main scripts -->
  <script src="main.js"></script>
+ <script>
+  function checknull(){
+    if(document.getElementById('name').value == "" || document.getElementById('namefull').value == ""){
+      alert('กรุณากรอกข้อมูลให้ครบ')
+    }else{
+      document.getElementById("save").submit();
+    }
+  }
+  
+ </script>
 
 </body>
 
