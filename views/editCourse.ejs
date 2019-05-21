@@ -195,7 +195,9 @@
                                         <label for="item">จำนวนคนแต่ละกลุ่ม</label>
                                         <input type="number" class="form-control" id="student" name="student">
                                     </div>
-
+                                    <div class="form-group">
+                                            <p id="demo"></p>
+                                    </div>
                                     <a onclick="checknull()" class="btn btn-success">บันทึก</a>
                                     <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
                             </div>
@@ -271,7 +273,8 @@
     <script>
         function checknull() {
             if (document.getElementById('teacherName').value == "" || document.getElementById('group').value == "" || document.getElementById('student').value == "") {
-                alert('กรุณากรอกข้อมูลให้ครบ')
+                document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
+                // alert('กรุณากรอกข้อมูลให้ครบ')
             } else {
                 document.getElementById("save").submit();
             }

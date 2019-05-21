@@ -176,10 +176,6 @@ courseRouter.route('/saveExam').post(function (req, res) {
   var array = str.split(",");
   exam.examiner = array;
   exam.group = req.body.group;
-  Group.findOne({ courseID: courseId, groupID: exam.group }, function (err, group) {
-    exam.student = group.student
-  });
-
   exam.save()
     .then(course => {
       res.redirect('/manageExam');

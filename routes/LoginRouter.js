@@ -9,6 +9,15 @@ const Official = require('../models/Official.model');
 LoginRouter.route('/').get(function (req, res) {
   res.render('login', {ไม่ผ่าน:''});
 });
+LoginRouter.route('/').get(function (req, res) {
+  res.render('home', {data:''});
+});
+LoginRouter.route('/').get(function (req, res) {
+  res.render('homeStudent', {data:''});
+});
+LoginRouter.route('/').get(function (req, res) {
+  res.render('homeTeacher', {data:''});
+});
 userid=""
 LoginRouter.post("/", (req, res) => {
   User.find({ user: req.body.user }, function (err, data) {
@@ -27,11 +36,11 @@ LoginRouter.post("/", (req, res) => {
           console.log(data);
         }
       } else {
-        res.render('login',{ไม่ผ่าน:'ไม่ผ่าน'});
+        res.render('login',{ไม่ผ่าน:'พาสผิด'});
         console.log('ไม่ผ่าน')
       }
     }else{
-      res.render('login',{ไม่ผ่าน:'ไม่ผ่าน'});
+      res.render('login',{ไม่ผ่าน:'ไอดีผิด'});
         console.log('ไม่ผ่าน')
     }
   })
