@@ -38,7 +38,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
-
+            <div id="showterm" class="text-white mx-3"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -263,6 +263,8 @@
      <!-- main scripts -->
     <script src="js/main.js"></script>
     <script>
+  loadTerm()
+  showSession()
             function checknull() {
                 if (document.getElementById('firstname').value == "" || document.getElementById('lastname').value == "" || document.getElementById('tier').value == "" || document.getElementById('faculty').value == "" || document.getElementById('major').value == "" ) {
                     document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';

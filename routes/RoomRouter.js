@@ -36,7 +36,11 @@ RoomRouter.route('/post').post(function (req, res) {
 RoomRouter.route('/edit/:id').get(function (req, res) {
     const id = req.params.id;
     Room.findById(id, function (err, Room) {
-        res.render('editRoom', { Room: Room });
+    }).then(room => {
+        Build.find(function (err, Build) {
+            console.log(Build)
+            res.render('editRoom', { Room: room, build: Build });
+        });
     });
 });
 //---------------------------------------Update-----------------------------------------------
@@ -47,7 +51,10 @@ RoomRouter.route('/update/:id').post(function (req, res) {
         else {
             // do your updates here
             Room.name = req.body.name;
-            Room.namefull = req.body.namefull;
+            Room.namebuild = req.body.namebuild;
+            Room.typeroom = req.body.typeroom;
+            Room.row = req.body.row;
+            Room.column = req.body.column;
 
             Room.save().then(Room => {
                 res.redirect('/manageRoom');

@@ -22,7 +22,7 @@
 </head>
 
 
-<body id="page-top" onload="showUser()">
+<body id="page-top" onload="showUser(),loadTerm(),showSession()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -31,13 +31,13 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+            <a class="sidebar-brand d-flex text-white align-items-center justify-content-center">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-users-cog"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
-            <div onload="" class="text-white mx-3">ภาคเรียนที่ : </div>
+            <div id="showterm"class="text-white mx-3"> </div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Pages จัดการบุคคลากร Menu -->
@@ -143,7 +143,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span id="showUser"class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span id="showUser"class="mr-2 d-none d-lg-inline text-gray-600 small">sdsadsd</span>
                                 <i class="fas fa-user fa-sm fa-fw"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -167,6 +167,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">หน้าหลัก</h1>
+                        <input id="data" value="<%=data%>" hidden>
                     </div>
 
                 </div>
@@ -231,13 +232,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <!-- main scripts -->
-    <!-- <script src="js/main.js"></script> -->
+    <script src="js/main.js"></script>
     <script>
-function showUser(){
-// document.getElementById('showUser').innerHTML = sessionStorage.getItem("name")
-$('#showUser').text("ยินดีต้อนรับคุณ : " + sessionStorage.getItem("name"));
-console.log("555")
-}
+  var test = document.getElementById('data').value;
+  var build = JSON.parse(test);
+  setSession(build);
+  console.log(build);
+  loadTerm()
+  showSession()
     </script>
 </body>
 

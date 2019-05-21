@@ -37,7 +37,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Teacher</div>
             </a>
-
+            <div id="showterm" class="text-white mx-3"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Tables -->
@@ -91,7 +91,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                <span id="showUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
                                 <i class="fas fa-user fa-sm fa-fw"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -115,6 +115,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">หน้าหลัก</h1>
+                        <input id="data" value="<%=data%>" hidden>
                     </div>
 
                 </div>
@@ -180,6 +181,15 @@
 
      <!-- main scripts -->
     <script src="js/main.js"></script>
+    <script>
+    var test = document.getElementById('data').value;
+  var build = JSON.parse(test);
+  setSession(build);
+  console.log(build);
+  showUser()
+  loadTerm()
+  showSession()
+          </script>
 
 </body>
 

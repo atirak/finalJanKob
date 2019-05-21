@@ -12,13 +12,13 @@
     <title>Official - Home</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        href="/https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,13 +31,13 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/homeOfficial/">
+            <a class="sidebar-brand d-flex text-white align-items-center justify-content-center">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-users-cog"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Official</div>
             </a>
-
+            <div id="showterm" class="text-white mx-3"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Tables -->
@@ -91,7 +91,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                <span id="showUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
                                 <i class="fas fa-user fa-sm fa-fw"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -115,6 +115,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">หน้าหลัก</h1>
+                        <input id="data" hidden value="<%=data%>">
                     </div>
 
                 </div>
@@ -159,27 +160,36 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
 
      <!--ajax scripts -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="/https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <!-- main scripts -->
     <script src="js/main.js"></script>
+    <script>
+        var test = document.getElementById('data').value;
+            var build = JSON.parse(test);
+            setSession(build);
+            console.log(build);
+        showUser()
+            loadTerm()
+            showSession()
+          </script>
 
 </body>
 

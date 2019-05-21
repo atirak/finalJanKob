@@ -37,7 +37,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Student</div>
             </a>
-
+            <div id="showterm" class="text-white mx-3"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -116,6 +116,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">หน้าหลัก</h1>
+                        <input id="data" value="<%=data%>" hidden>
                     </div>
 
                 </div>
@@ -180,6 +181,15 @@
 
      <!-- main scripts -->
     <script src="js/main.js"></script>
+    <script>
+            var test = document.getElementById('data').value;
+            var build = JSON.parse(test);
+            setSession(build);
+            console.log(build);
+            showUser()
+            loadTerm()
+            showSession()
+          </script>
 
 </body>
 

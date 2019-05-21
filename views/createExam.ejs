@@ -34,7 +34,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
-
+            <div id="showterm" class="text-white mx-3"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -293,7 +293,15 @@
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
 
+    <!--ajax scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+     <!-- main scripts -->
+    <script src="js/main.js"></script>
+
     <script>
+          loadTerm()
+         showSession()
          function checknull() {
             if (document.getElementById('datetime').value == "" || document.getElementById('lengTime').value == "" || document.getElementById('userName').value == "" || document.getElementById('roomID').value == "") {
                 document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';

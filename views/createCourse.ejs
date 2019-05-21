@@ -38,7 +38,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
-
+            <div id="showterm" class="text-white mx-3"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -283,7 +283,15 @@
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
     <script src="xlsx.full.min.js"></script>
+
+    <!--ajax scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+     <!-- main scripts -->
+    <script src="js/main.js"></script>
     <script>
+          loadTerm()
+         showSession()
         var boolean = true
         function Name(n1, n2, n3) {
             if (n3 === '1') {

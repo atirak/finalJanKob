@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - แก้ไขข้อมูลเจ้าหน้าที่</title>
+    <title>Admin - แก้ไขห้อง</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/manageExam">
-                  <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการการสอบ</span></a>
             </li>
             <!-- Nav Item - Tables -->
@@ -101,7 +101,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>ปีการศึกษา</span></a>
             </li>
-          
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -142,7 +142,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                    
+
 
                     </ul>
 
@@ -157,32 +157,48 @@
                         <div class="card-body p-0">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">แก้ไขข้อมูลเจ้าหน้าที่</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">แก้ไขห้อง</h1>
                                 </div>
-                                <form id="save" method="post" action="/manageOfficial/update/<%= official._id %>">
+                                <form id="save" method="post" action="/manageRoom/update/<%=Room._id%>">
                                     <div class="form-group">
-                                        <label for="item">ชื่อ</label>
-                                        <input type="text" class="form-control" id="firstname" name="firstname"
-                                            value="<%= official.firstname %>">
+                                        <label for="item">ตึก</label>
+                                        <div class="form-group">
+                                            <select class="form-control" id="namebuild" name="namebuild"
+                                                style="width:auto;">
+                                                <option hidden>เลือก</option>
+                                                <% for(var i=0; i < build.length; i++) { %>
+                                                <option value="<%= build[i].namefull %>"><%= build[i].namefull %>
+                                                </option>
+                                                <% } %>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="item">นามสกุล</label>
-                                        <input type="text" class="form-control" id="lastname" name="lastname"
-                                            value="<%= official.lastname %>">
+                                        <label for="item">เลขห้อง</label>
+                                        <input type="text" class="form-control" value="<%=Room.name%>" id="name" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="item">ตำแหน่ง</label>
-                                        <input type="text" class="form-control" id="status" name="status"
-                                            value="<%= official.status %>">
+                                        <label for="item">ประเภท</label>
+                                        <select class="form-control" id="typeroom" name="typeroom" style="width:auto;">
+                                            <option hidden>เลือก</option>
+                                            <option value="Lab">Lab</option>
+                                            <option value="Lecture">Lecture</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item">จำนวนแถว</label>
+                                        <input type="text" class="form-control" value="<%=Room.row%>" id="row" name="row">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item">จำนวนคอลัม</label>
+                                        <input type="text" class="form-control" value="<%=Room.column%>" id="column" name="column">
                                     </div>
                                     <div class="form-group">
                                             <p id="demo"></p>
-                                        </div>
+                                    </div>
                                     <a onclick="checknull()" class="btn btn-success">บันทึก</a>
-                                    <a href="/manageOfficial" class="btn btn-danger">ยกเลิก</a>
-                                    <hr>
+                                    <a href="/manageRoom" class="btn btn-danger">ยกเลิก</a>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -247,22 +263,37 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
-    <!--ajax scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--ajax scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-     <!-- main scripts -->
-    <script src="js/main.js"></script>
+<!-- main scripts -->
+<script src="js/main.js"></script>
     <script>
-  loadTerm()
-  showSession()
+          loadTerm()
+         showSession()
         function checknull() {
-            if (document.getElementById('firstname').value == "" || document.getElementById('lastname').value == "" || document.getElementById('status').value == "" ) {
+            if (document.getElementById('namebuild').value == "" || document.getElementById('name').value == "" || document.getElementById('typeroom').value == ""|| document.getElementById('row').value == ""|| document.getElementById('column').value == "") {
                 document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
                 // alert('กรุณากรอกข้อมูลให้ครบ')
             } else {
                 document.getElementById("save").submit();
             }
         }
+
+
+        function Name(n1, n2, n3) {
+            if (n3 === '1') {
+                var e = document.getElementById(n1);
+                var name = e.options[e.selectedIndex].value;
+                document.getElementById(n2).value = name;
+            } else {
+                var e = document.getElementById(n1);
+                var name = e.options[e.selectedIndex].value;
+                document.getElementById(n2).value += name + ". ";
+            }
+
+        }
+
     </script>
 </body>
 
