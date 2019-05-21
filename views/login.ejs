@@ -35,7 +35,7 @@
           <div class="card-body p-0">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
+                <h1 class="h4 text-gray-900 mb-4">Welcome</h1>
               </div>
               <form id="save" class="user" method="POST" action="/login">
                 <div class="form-group">
@@ -46,7 +46,10 @@
                   <input type="password" class="form-control form-control-user" id="pass" name="pass"
                     id="exampleInputPassword" placeholder="Password">
                 </div>
-                <a onclick="checknull()" class="btn btn-primary btn-user btn-block">
+                <div class="form-group">
+                  <p id="demo"></p>
+                </div>
+                <a onclick="checknull()" class="btn btn-primary text-white btn-user btn-block">
                   Login
                 </a>
                 <hr>
@@ -75,14 +78,22 @@
 
   <!--ajax scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/main.js"></script>
   <script>
-    if('<%-ไม่ผ่าน%>' === 'ไม่ผ่าน'){
-      alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
+    if('<%-ไม่ผ่าน%>' === 'ไอดีผิด'){
+      // alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
+    document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">ชื่อผู้ใช้ไม่ถูกต้อง !</p>';
+    }else if('<%-ไม่ผ่าน%>' === 'พาสผิด'){
+      document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">รหัสผ่านไม่ถูกต้อง !</p>';
     }
+
     function checknull() {
-      if (document.getElementById('user').value == "" || document.getElementById('pass').value == "") {
-        alert('กรุณากรอกข้อมูลให้ครบ')
-      } else {
+      if (document.getElementById('user').value == "") {
+        document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกชื่อผู้ใช้!</p>';
+        // alert('กรุณากรอกข้อมูลให้ครบ')
+      } else if(document.getElementById('pass').value == ""){
+        document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกรหัสผ่าน!</p>';
+      }else{
         document.getElementById('save').submit();
       }
     }
