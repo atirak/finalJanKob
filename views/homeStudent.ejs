@@ -116,6 +116,12 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">หน้าหลัก</h1>
+                        <%  try{ %>
+                            <%  if(data.length > 0) {  %>
+                                <input id="data" value="<%=data%>" hidden>
+                                <%    }  %>
+                                <%   }catch(err){  %>
+                                    <%  }  %>
                     </div>
 
                 </div>
@@ -179,7 +185,7 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <!-- main scripts -->
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script>
             var test = document.getElementById('data').value;
             var build = JSON.parse(test);

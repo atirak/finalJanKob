@@ -155,7 +155,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">จัดสอบ</h1>
                                 </div>
-                                <form id="save" method="post" action="/manageCourse/saveExam/">
+                                <form method="post" action="/manageCourse/saveExam/">
                                     <div class="form-group">
                                         <label for="item">เวลา</label>
                                         <div class="form-group">
@@ -221,7 +221,7 @@
                                         <div class="form-group">
                                                 <p id="demo"></p>
                                         </div>
-                                        <a onclick="checknull()"  class="text-white btn btn-success">บันทึก</a>
+                                        <button type="submit"  class="text-white btn btn-success">บันทึก</button>
                                         <a href="/manageCourse" class="btn btn-danger">ยกเลิก</a>
                                     </div>
 
@@ -300,14 +300,6 @@
     <script src="js/main.js"></script>
 
     <script>
-function checknull() {
-            if (document.getElementById('datetime').value == "" || document.getElementById('lengtime').value == "" || document.getElementById('userName').value == "" || document.getElementById('roomID').value == "") {
-                document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
-                // alert('กรุณากรอกข้อมูลให้ครบ')
-            } else {
-                document.getElementById("save").submit();
-            }
-        }
         type = ""
         function set(type) {
             type = document.getElementById(type).value
