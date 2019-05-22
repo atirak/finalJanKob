@@ -9,6 +9,7 @@ function loadTerm() {
             console.log(customer);
             sessionStorage.setItem("year", customer[0].year);
             sessionStorage.setItem("term", customer[0].term);
+            showSession()
         },
         error: function (e) {
             console.log("ERROR: ", e);

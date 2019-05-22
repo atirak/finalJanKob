@@ -1,4 +1,5 @@
 //inside building.read.test.js
+// const assert = require('assert');
 const assert = require('assert');
 const Building = require('../models/Build.model');
 let building;
