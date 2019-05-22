@@ -190,7 +190,7 @@
                                         </div>
                                         <label for="item">เลือกกลุ่ม</label>
                                         <div class="form-group">
-                                            <select class="form-control" id="roomID" style="width:auto;" name="group">
+                                            <select class="form-control" id="group" style="width:auto;" name="group">
                                                 <option hidden>เลือก</option>
                                                 <% for(var i=0; i < group.length; i++) { %>
                                                 <option value="<%= group[i].groupID %>">
@@ -297,13 +297,11 @@
     <script src="/https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <!-- main scripts -->
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 
     <script>
-          loadTerm()
-         showSession()
-         function checknull() {
-            if (document.getElementById('datetime').value == "" || document.getElementById('lengTime').value == "" || document.getElementById('userName').value == "" || document.getElementById('roomID').value == "") {
+function checknull() {
+            if (document.getElementById('datetime').value == "" || document.getElementById('lengtime').value == "" || document.getElementById('userName').value == "" || document.getElementById('roomID').value == "") {
                 document.getElementById("demo").innerHTML= '<p class="text-danger" style="margin: auto; padding: 30px;background-color:#FADEDE; width:50%; height:5em; text-align:center;border: 1px solid ;border-radius: 5px;">กรุณากรอกข้อมูลให้ครบ!</p>';
                 // alert('กรุณากรอกข้อมูลให้ครบ')
             } else {
